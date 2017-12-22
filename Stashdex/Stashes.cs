@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Stashdex
+{
+    public static class Stashes
+    {
+        public static List<Stash> stashes = new List<Stash>();
+    }
+}
