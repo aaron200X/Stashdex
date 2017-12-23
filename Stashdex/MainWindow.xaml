@@ -42,8 +42,6 @@
             <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="49,31,0,0" VerticalAlignment="Top"/>
         </Grid>
         <TextBox x:Name="itemNameBox" HorizontalAlignment="Left" Height="23" Margin="355,109,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="569"/>
-        <TextBox x:Name="xyKoordinate" HorizontalAlignment="Left" Height="46" Margin="355,137,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="importButton" Content="Import" HorizontalAlignment="Left" Margin="229,882,0,0" VerticalAlignment="Top" Width="143" Height="38" Click="importButton_Click"/>
 
     </Grid>
 </Window>

@@ -83,9 +83,6 @@ namespace Stashdex
         {
             // Retrieve the coordinate of the mouse position.
             Point pt = e.GetPosition((UIElement)sender);
-            pt.X = pt.X;
-            pt.Y = pt.Y;
-            xyKoordinate.Text = pt.ToString();
 
             // Clear the contents of the list used for hit test results.
             hitResultsList.Clear();
@@ -129,10 +126,6 @@ namespace Stashdex
             // Set the behavior to return visuals at all z-order levels.
             return HitTestResultBehavior.Continue;
         }
-
-        private void importButton_Click(object sender, RoutedEventArgs e)
-        {
-            jsonImport.import("", "");
-        }
+        
     }
 }
