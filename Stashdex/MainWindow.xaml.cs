@@ -132,7 +132,7 @@ namespace Stashdex
 
         private void importButton_Click(object sender, RoutedEventArgs e)
         {
-
+            jsonImport.import("", "");
         }
     }
 }

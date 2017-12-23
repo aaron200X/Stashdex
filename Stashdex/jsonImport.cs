@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
-
+using System.Net;
 
 namespace Stashdex
 {
@@ -22,7 +22,24 @@ namespace Stashdex
 
         public static void import(string name, string sessid)
         {
-           
+            WebRequest webrequest = WebRequest.Create("https://pathofexile.com/character-window/get-stash-items?league=Abyss&tabs=1&tabIndex=0&accountName=" + name);
+            webrequest.Method = "POST";
+            var postData = "poesessid=" + sessid;
+            var data = Encoding.ASCII.GetBytes(postData);
+            webrequest.ContentLength = data.Length;
+            
+            
+            using (var stream = webrequest.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+            Cookie cookie = new Cookie("POESESSID", sessid);
+            HttpWebResponse response = (HttpWebResponse)webrequest.GetResponse();
+            response.Cookies.Add(new Cookie("POESESSID", sessid));
+
+
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
         }
     }
 }
