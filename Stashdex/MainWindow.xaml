@@ -41,7 +41,14 @@
 
             <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="49,31,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <TextBox x:Name="itemNameBox" HorizontalAlignment="Left" Height="23" Margin="355,109,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="569"/>
+        <TextBox x:Name="itemNameBox" HorizontalAlignment="Left" Height="23" Margin="355,109,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <Canvas x:Name="itemPreviewCanvas" HorizontalAlignment="Left" Height="300" Margin="88,566,0,-101715.333" VerticalAlignment="Top" Width="200" Background="Black">
+            <Label x:Name="nameLabel" Content="Label" Canvas.Left="10" Canvas.Top="10" Height="30" Width="Auto" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
+            <Label x:Name="itemTypeLabel" Content="Label" Canvas.Top="40" Height="30" Width="Auto" Canvas.Left="10" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
+            <Image x:Name="itemPreviewUpperBg" Height="84" Width="200"/>
+
+
+        </Canvas>
 
     </Grid>
 </Window>
