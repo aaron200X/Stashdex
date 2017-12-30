@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Windows.Media;
 
 namespace Stashdex
 {
@@ -158,7 +157,7 @@ namespace Stashdex
     
 
 
-         private void fillItemView(Item item)
+         public void fillItemView(Item item)
         {
             //itemPreviewUpperBg.lo
             //Der Name ist bei Magicitems leer und das Itemtype übernimmt die Funktion
@@ -171,9 +170,18 @@ namespace Stashdex
                 nameLabel.Content = item.name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim();
                 itemTypeLabel.Content = item.typeLine.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim();
             }
-            //nameLabel.Width = nameLabel.Content.ToString().Length * 10;
+            if (item?.explicitMods?.Count() >= 0)
+            {
+                explizitMods.Content = string.Join("\n", item.explicitMods);
+            } else
+            {
+                explizitMods.Content = "";
+            }
+
+            //Get biggest width
             double biggestWidth = 0;
-            for(int i = 0; i < itemPreviewCanvas.Children.Count; i++)
+            
+            for (int i = 0; i < itemPreviewCanvas.Children.Count; i++)
             {
                 if (itemPreviewCanvas.Children[i].GetType().ToString().Contains("Label"))
                 {
@@ -184,9 +192,13 @@ namespace Stashdex
                     }
                 }
             }
-           
-            itemPreviewCanvas.Width = biggestWidth + 20;
 
+            sizeDebug.Text = biggestWidth.ToString();
+            
+            itemPreviewCanvas.Width = biggestWidth + 20;
+            //nameLabel.Width = 600;
+            //nameLabel.VerticalAlignment = VerticalAlignment.Center;
+            //nameLabel.HorizontalAlignment = HorizontalAlignment.Center;
 
         }
 

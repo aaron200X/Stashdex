@@ -82,12 +82,6 @@ namespace Stashdex
 
     }
 
-    public class RootObject
-    {
-        public int numTabs { get; set; }
-        public List<Item> items { get; set; }
-    }
-
     public class Stash
     {
         public int numTabs { get; set; }

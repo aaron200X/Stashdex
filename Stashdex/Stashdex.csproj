@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="itemPreview.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="jsonImport.cs" />
     <Compile Include="Stash.cs" />
