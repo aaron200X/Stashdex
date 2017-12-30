@@ -193,9 +193,53 @@ namespace Stashdex
                 }
             }
 
-            sizeDebug.Text = biggestWidth.ToString();
+            //Setzt die Borderfarbe
+            Brush borderBrush = new SolidColorBrush();
+            switch (item.frameType)
+            {
+                case 0:
+                    previewBorder.BorderBrush = Brushes.White;
+                    break;
+                case 1:
+                    previewBorder.BorderBrush = Brushes.Blue;
+                    break;
+                case 2:
+                    previewBorder.BorderBrush = Brushes.Gold;
+                    break;
+                case 3:
+                    previewBorder.BorderBrush = Brushes.Goldenrod;
+                    break;
+                case 4:
+                    previewBorder.BorderBrush = Brushes.ForestGreen;
+                    break;
+                case 5:
+                    previewBorder.BorderBrush = Brushes.Black;
+                    break;
+                case 6:
+                    previewBorder.BorderBrush = Brushes.Gray;
+                    break;
+                case 7:
+                    previewBorder.BorderBrush = Brushes.Green;
+                    break;
+                case 8:
+                    previewBorder.BorderBrush = Brushes.Violet;
+                    break;
+                case 9:
+                    
+                    previewBorder.BorderBrush = Brushes.Black;
+                    break;
+
+            }
+            
+
+            
+
+                //Setzt die Breite
+                sizeDebug.Text = biggestWidth.ToString();
             
             itemPreviewCanvas.Width = biggestWidth + 20;
+            previewBorder.Width = biggestWidth + 20;
+            
             //nameLabel.Width = 600;
             //nameLabel.VerticalAlignment = VerticalAlignment.Center;
             //nameLabel.HorizontalAlignment = HorizontalAlignment.Center;

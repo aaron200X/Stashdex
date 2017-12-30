@@ -47,6 +47,7 @@
             <Label x:Name="nameLabel" Content="Label" Canvas.Left="10" Canvas.Top="10" Height="30" Width="Auto" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
             <Label x:Name="itemTypeLabel" Content="Label" Canvas.Top="40" Height="30" Width="Auto" Canvas.Left="10" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
             <Label x:Name="explizitMods" Content="Label" Canvas.Top="120" Height="Auto" Width="Auto" Canvas.Left="10" Foreground="White" FontSize="10" HorizontalAlignment="Center"/>
+            <Border x:Name="previewBorder" BorderBrush="Yellow" BorderThickness="3" Height="300" Width="200"/>
 
 
 
