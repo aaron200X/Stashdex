@@ -29,12 +29,7 @@ namespace Stashdex
             InitializeComponent();
             jsonImport.import();
         }
-
-        //private void ImportButton_Click(object sender, EventArgs e)
-        //{
-        //    jsonImport j = new jsonImport();
-        //    j.Show();
-        //}
+        
 
         public void displayObject(Item item, int counter)
         {
@@ -95,16 +90,7 @@ namespace Stashdex
             // Perform actions on the hit test results list.
             if (hitResultsList.Count > 0)
             {
-                //Debug.Print(hitResultsList.Count.ToString());
-                ////schmeißt alle nicht Images raus, damit ich an den Namen komme
-                //if (hitResultsList[0].GetType().ToString() == "System.Windows.Controls.Canvas")
-                //{
-                //    hitResultsList.Remove(hitResultsList[0]);
-                //}
-                //else
-                //{
-                //    hitResultsList.Remove(hitResultsList[1]);
-                //}
+               
 
                 for (int i = 0; i <= hitResultsList.Count(); i++)
                 {
@@ -137,22 +123,7 @@ namespace Stashdex
                     
                 }
             }
-
-            //foreach (Image hitResult in hitResultsList)
-            //{
-            //    int index = Convert.ToInt32(hitResult.Name.Split('_').Last());
-            //    //itemNameBox.Text = hitResult.Name;
-            //    Item item = Stashes.stashes[0].items[index];
-            //    itemNameBox.Text = item.typeLine;
-
-            //    Thickness margin = itemPreviewCanvas.Margin;
-            //    margin.Left = Mouse.GetPosition(this).X + 10;
-            //    margin.Top = Mouse.GetPosition(this).Y + 10;
-            //    itemPreviewCanvas.Margin = margin;
-
-            //    fillItemView(item);
-
-            //}
+            
         }
     
 
@@ -239,10 +210,6 @@ namespace Stashdex
             
             itemPreviewCanvas.Width = biggestWidth + 20;
             previewBorder.Width = biggestWidth + 20;
-            
-            //nameLabel.Width = 600;
-            //nameLabel.VerticalAlignment = VerticalAlignment.Center;
-            //nameLabel.HorizontalAlignment = HorizontalAlignment.Center;
 
         }
 
