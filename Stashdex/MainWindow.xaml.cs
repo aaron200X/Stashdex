@@ -195,8 +195,7 @@ namespace Stashdex
                 case 8:
                     previewBorder.BorderBrush = Brushes.Violet;
                     break;
-                case 9:
-                    
+                case 9:  
                     previewBorder.BorderBrush = Brushes.Black;
                     break;
 
@@ -233,6 +232,11 @@ namespace Stashdex
             image.Source = bi;
             return image;
         }
-        
+
+        private void filterOptionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            FilterOptionsWindow filterWindow = new FilterOptionsWindow();
+            filterWindow.Show();
+        }
     }
 }
