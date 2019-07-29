@@ -148,6 +148,7 @@ namespace Stashdex
             {
                 explizitMods.Content = "";
             }
+            explizitMods.Content = item.filterMods;
 
             //Get biggest width
             double biggestWidth = 0;

@@ -64,6 +64,7 @@
     <Compile Include="FilterOptionsWindow.xaml.cs">
       <DependentUpon>FilterOptionsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HelpFunctions.cs" />
     <Compile Include="itemPreview.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="jsonImport.cs" />

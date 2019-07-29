@@ -4,41 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using help = Helpfunctions.HelpFunctions;
 
-namespace Stashdex
-{
-    public class Socket
-    {
+namespace Stashdex {
+    public class Socket {
         public int group { get; set; }
         public object attr { get; set; }
         public string sColour { get; set; }
     }
 
-    public class Property
-    {
+    public class Property {
         public string name { get; set; }
         public List<object> values { get; set; }
         public int displayMode { get; set; }
         public int type { get; set; }
     }
 
-    public class Requirement
-    {
+    public class Requirement {
         public string name { get; set; }
         public List<List<object>> values { get; set; }
         public int displayMode { get; set; }
     }
 
-    public class AdditionalProperty
-    {
+    public class AdditionalProperty {
         public string name { get; set; }
         public List<List<object>> values { get; set; }
         public int displayMode { get; set; }
         public double progress { get; set; }
     }
 
-    public class Item
-    {
+    public class Item {
         public bool verified { get; set; }
         public int w { get; set; }
         public int h { get; set; }
@@ -68,7 +63,7 @@ namespace Stashdex
         public List<string> craftedMods { get; set; }
         public List<string> utilityMods { get; set; }
         public List<string> enchantMods { get; set; }
-        private List<string> filterMods;
+        private List<string> _filterMods;
 
         //public string name
         //{
@@ -82,31 +77,40 @@ namespace Stashdex
         //    set { _typeLine = value.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
         //}
 
-        public List<string> _filterMods {
-            get { return filterMods; }
-            set { filterMods = getFilterMods(); }
+        public List<string> filterMods {
+            get { return getFilterMods(); }
         }
 
         public List<string> getFilterMods() {
             List<string> list = new List<string>();
-            int ElementalResistance;
+            int elementalResistance = 0;
             //Elemental Resistance
-            foreach (string mod in implicitMods) {
-                if (Regex.IsMatch("+30% to Fire Resistance", mod)) {
-                    list.Add("BLA");
+            if (explicitMods.Any()) {
+                foreach (string mod in explicitMods) {
+                    if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning).*Resistance")) {
+                        elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);  
+                    }
                 }
+                foreach (string mod in implicitMods) {
+                    if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning) Resistance")) {
+                        elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);
+                    }
+                }
+                if (elementalResistance >= 0) {
+                    list.Add($"+{elementalResistance}% Elemental Resistance");
+                }
+
             }
             return list;
         }
 
     }
 
-    public class Stash
-    {
+    public class Stash {
         public int numTabs { get; set; }
         public List<Item> items { get; set; }
         public bool quadLayout { get; set; }
     }
 
-   
+
 }
