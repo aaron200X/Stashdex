@@ -59,6 +59,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Attributes.cs" />
+    <Compile Include="FilterOptions.cs" />
     <Compile Include="FilterOptionsWindow.xaml.cs">
       <DependentUpon>FilterOptionsWindow.xaml</DependentUpon>
     </Compile>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Stashdex
 {
@@ -67,6 +68,7 @@ namespace Stashdex
         public List<string> craftedMods { get; set; }
         public List<string> utilityMods { get; set; }
         public List<string> enchantMods { get; set; }
+        private List<string> filterMods;
 
         //public string name
         //{
@@ -80,6 +82,23 @@ namespace Stashdex
         //    set { _typeLine = value.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
         //}
 
+        public List<string> _filterMods {
+            get { return filterMods; }
+            set { filterMods = getFilterMods(); }
+        }
+
+        public List<string> getFilterMods() {
+            List<string> list = new List<string>();
+            int ElementalResistance;
+            //Elemental Resistance
+            foreach (string mod in implicitMods) {
+                if (Regex.IsMatch("+30% to Fire Resistance", mod)) {
+                    list.Add("BLA");
+                }
+            }
+            return list;
+        }
+
     }
 
     public class Stash
@@ -88,4 +107,6 @@ namespace Stashdex
         public List<Item> items { get; set; }
         public bool quadLayout { get; set; }
     }
+
+   
 }
