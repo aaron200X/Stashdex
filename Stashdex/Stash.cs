@@ -63,8 +63,8 @@ namespace Stashdex {
         public List<string> craftedMods { get; set; }
         public List<string> utilityMods { get; set; }
         public List<string> enchantMods { get; set; }
-        private List<string> filterMods { get; set; }
-        private List<string> allMods { get; set; }
+        public List<string> filterMods { get; set; }
+        public List<string> allMods { get; set; }
         //public string name
         //{
         //    get { return name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
@@ -88,7 +88,6 @@ namespace Stashdex {
         public List<string> getAllmods() {
             List<string> allMods = new List<string>();
 
-
             if (implicitMods != null) allMods?.AddRange(implicitMods);
             if (explicitMods != null) allMods?.AddRange(explicitMods);
             if (craftedMods != null) allMods?.AddRange(craftedMods);
@@ -102,14 +101,9 @@ namespace Stashdex {
             List<string> list = new List<string>();
             int elementalResistance = 0;
             //Elemental Resistance
-            if (explicitMods.Any()) {
-                foreach (string mod in explicitMods) {
+            if (allMods.Any()) {
+                foreach (string mod in allMods) {
                     if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning).*Resistance")) {
-                        elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);
-                    }
-                }
-                foreach (string mod in implicitMods) {
-                    if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning) Resistance")) {
                         elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);
                     }
                 }
