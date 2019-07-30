@@ -9,5 +9,6 @@ namespace Stashdex
     public static class Stashes
     {
         public static List<Stash> stashes = new List<Stash>();
+
     }
 }

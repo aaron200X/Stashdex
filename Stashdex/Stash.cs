@@ -63,8 +63,8 @@ namespace Stashdex {
         public List<string> craftedMods { get; set; }
         public List<string> utilityMods { get; set; }
         public List<string> enchantMods { get; set; }
-        private List<string> _filterMods;
-
+        private List<string> filterMods { get; set; }
+        private List<string> allMods { get; set; }
         //public string name
         //{
         //    get { return name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
@@ -77,8 +77,25 @@ namespace Stashdex {
         //    set { _typeLine = value.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
         //}
 
-        public List<string> filterMods {
-            get { return getFilterMods(); }
+
+
+        //public List<string> filterMods {
+        //    get { return getFilterMods(); }
+        //}
+
+
+
+        public List<string> getAllmods() {
+            List<string> allMods = new List<string>();
+
+
+            if (implicitMods != null) allMods?.AddRange(implicitMods);
+            if (explicitMods != null) allMods?.AddRange(explicitMods);
+            if (craftedMods != null) allMods?.AddRange(craftedMods);
+            if (utilityMods != null) allMods?.AddRange(utilityMods);
+            if (enchantMods != null) allMods?.AddRange(enchantMods);
+            //if (implicitMods != null) allMods?.Concat(implicitMods).Concat(explicitMods).Concat(craftedMods).Concat(utilityMods).Concat(enchantMods);
+            return allMods;
         }
 
         public List<string> getFilterMods() {
@@ -88,7 +105,7 @@ namespace Stashdex {
             if (explicitMods.Any()) {
                 foreach (string mod in explicitMods) {
                     if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning).*Resistance")) {
-                        elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);  
+                        elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);
                     }
                 }
                 foreach (string mod in implicitMods) {
@@ -105,6 +122,7 @@ namespace Stashdex {
         }
 
     }
+
 
     public class Stash {
         public int numTabs { get; set; }

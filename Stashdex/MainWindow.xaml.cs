@@ -143,12 +143,13 @@ namespace Stashdex
             }
             if (item?.explicitMods?.Count() >= 0)
             {
+
                 explizitMods.Content = string.Join("\n", item.explicitMods);
             } else
             {
                 explizitMods.Content = "";
             }
-            explizitMods.Content = item.filterMods;
+            //explizitMods.Content = item.filterMods;
 
             //Get biggest width
             double biggestWidth = 0;
