@@ -16,7 +16,7 @@ namespace Stashdex {
 
     public class SearchFunctions{
         public void search(List<Item> itemlist, List<FilterOptions> filter){
-            
+
         }
 
     }

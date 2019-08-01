@@ -65,6 +65,7 @@ namespace Stashdex {
         public List<string> enchantMods { get; set; }
         public List<string> filterMods { get; set; }
         public List<string> allMods { get; set; }
+        public List<string> allModsDic { get; set; }
         //public string name
         //{
         //    get { return name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
@@ -100,11 +101,17 @@ namespace Stashdex {
         public List<string> getFilterMods() {
             List<string> list = new List<string>();
             int elementalResistance = 0;
+            int allResistance = 0;
             //Elemental Resistance
             if (allMods.Any()) {
                 foreach (string mod in allMods) {
+                    //Ele Resis
                     if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning).*Resistance")) {
                         elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);
+                    }
+                    //All Resis
+                    if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning|Chaos).*Resistance")) {
+                        allResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);
                     }
                 }
                 if (elementalResistance >= 0) {
