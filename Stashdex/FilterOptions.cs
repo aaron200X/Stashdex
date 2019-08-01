@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Stashdex {
     public class FilterOptions {
@@ -19,7 +20,22 @@ namespace Stashdex {
 
         }
 
+        public static void fillFilterBox(FilterOptionsWindow filterWindow) {
+            Stashes.getAbsolutelyAllMods();
+
+            foreach (string mod in Stashes.absolutelyAllMods) {
+                ListBoxItem item = new ListBoxItem();
+                item.Content = mod;
+                filterWindow.filterBox.Items.Add(item);
+            }
+            
+
+            
+        }
+
     }
+
+    
 
 
 

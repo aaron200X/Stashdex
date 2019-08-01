@@ -27,5 +27,11 @@ namespace Stashdex
         private void button_Click(object sender, RoutedEventArgs e) {
             //filterMenu.SetCurrentValue
         }
+
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
+
+        
     }
 }

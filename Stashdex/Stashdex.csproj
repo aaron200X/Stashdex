@@ -66,7 +66,6 @@
     </Compile>
     <Compile Include="HelpFunctions.cs" />
     <Compile Include="itemPreview.cs" />
-    <Compile Include="Items.cs" />
     <Compile Include="jsonImport.cs" />
     <Compile Include="Stash.cs" />
     <Compile Include="Stashes.cs" />

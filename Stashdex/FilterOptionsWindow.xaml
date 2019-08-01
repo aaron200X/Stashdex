@@ -6,23 +6,9 @@
         xmlns:local="clr-namespace:Stashdex"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Stashdex.FilterOptionsWindow"
         mc:Ignorable="d"
-        Title="FilterOptionsWindow" Height="300" Width="300">
+        Title="FilterOptionsWindow" Height="600" Width="800">
     <Grid>
-        <Button x:Name="button" Content="Filter" HorizontalAlignment="Left" Margin="208,10,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="217" Margin="25,21,0,0" VerticalAlignment="Top" Width="100">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-            <ListBoxItem/>
-            <ListBoxItem/>
-            <ListBoxItem/>
-            <ListBoxItem/>
-            <ListBoxItem/>
-            <ListBoxItem/>
-            <ListBoxItem/>
-            <ListBoxItem/>
-        </ListView>
+        <Button x:Name="button" Content="Filter" HorizontalAlignment="Left" Margin="708,10,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <ListBox x:Name="filterBox" HorizontalAlignment="Left" Height="551" Margin="10,10,0,0" VerticalAlignment="Top" Width="693" RenderTransformOrigin="0.531,0.536" SelectionChanged="listBox_SelectionChanged"/>
     </Grid>
 </Window>

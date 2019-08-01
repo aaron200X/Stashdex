@@ -238,6 +238,8 @@ namespace Stashdex
         private void filterOptionsButton_Click(object sender, RoutedEventArgs e)
         {
             FilterOptionsWindow filterWindow = new FilterOptionsWindow();
+            SearchFunctions.fillFilterBox(filterWindow);
+            
             filterWindow.Show();
         }
     }
