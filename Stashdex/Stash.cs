@@ -63,9 +63,9 @@ namespace Stashdex {
         public List<string> craftedMods { get; set; }
         public List<string> utilityMods { get; set; }
         public List<string> enchantMods { get; set; }
-        public List<string> filterMods { get; set; }
-        public List<string> allMods { get; set; }
-        public List<string> allModsDic { get; set; }
+        public List<string> filterMods = new List<string>();
+        public List<string> allMods = new List<string>();
+        public Dictionary<string, object> allModsDic = new Dictionary<string, object>();
         //public string name
         //{
         //    get { return name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
@@ -84,25 +84,44 @@ namespace Stashdex {
         //    get { return getFilterMods(); }
         //}
 
+        /// <summary>
+        /// fills the extrafields that I threw in the Item Class.
+        /// </summary>
+        public void fillEverything() {
+            fillAllMods();
+            getFilterMods();
+            if (filterMods != null) allMods?.AddRange(filterMods);
+            fillAllDics();
+        }
 
-
-        public List<string> getAllmods() {
-            List<string> allMods = new List<string>();
-
+        /// <summary>
+        /// Puts all mods in a new mod to easier work
+        /// </summary>
+        public void fillAllMods() {
             if (implicitMods != null) allMods?.AddRange(implicitMods);
             if (explicitMods != null) allMods?.AddRange(explicitMods);
             if (craftedMods != null) allMods?.AddRange(craftedMods);
             if (utilityMods != null) allMods?.AddRange(utilityMods);
             if (enchantMods != null) allMods?.AddRange(enchantMods);
             //if (implicitMods != null) allMods?.Concat(implicitMods).Concat(explicitMods).Concat(craftedMods).Concat(utilityMods).Concat(enchantMods);
-            return allMods;
         }
 
-        public List<string> getFilterMods() {
-            List<string> list = new List<string>();
+        /// <summary>
+        /// creates the mods in form of a dictionary to easier handling the numbers
+        /// </summary>
+        public void fillAllDics() {
+            object value;
+            string key;
+            foreach (string mod in allMods) {
+                value = help.getNumber1Regex.Match(mod).Value;
+                key = mod.Replace(value.ToString(), "#");
+                allModsDic.Add(key, value);
+            }
+        }
+
+        public void getFilterMods() {
             int elementalResistance = 0;
             int allResistance = 0;
-            //Elemental Resistance
             if (allMods.Any()) {
                 foreach (string mod in allMods) {
                     //Ele Resis
@@ -115,11 +134,10 @@ namespace Stashdex {
                     }
                 }
                 if (elementalResistance >= 0) {
-                    list.Add($"+{elementalResistance}% Elemental Resistance");
+                    filterMods.Add($"+{elementalResistance}% Elemental Resistance");
                 }
 
             }
-            return list;
         }
 
     }

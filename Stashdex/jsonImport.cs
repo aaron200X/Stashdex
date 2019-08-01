@@ -18,9 +18,7 @@ namespace Stashdex
             Stash stash = JsonConvert.DeserializeObject<Stash>(File.ReadAllText("../../TextFile1.txt"));
             //KOmme nicht an die Items bei der Erstellung ran. laufe also anschließend durch
             foreach (Item item in stash.items) {
-                item.allMods = item.getAllmods();
-                item.filterMods = item.getFilterMods();
-                if (item.filterMods != null) item.allMods?.AddRange(item.filterMods);
+                item.fillEverything();
             }
             //Stash stash = JsonConvert.DeserializeObject<Stash>(importTxt.Text);
             Stashes.stashes.Add(stash);
