@@ -105,7 +105,7 @@ namespace Stashdex {
         /// </summary>
         public void fillAllDics() {
             object value;
-            object oldValue;
+            //object oldValue;
             string key;
             foreach (string mod in allMods) {
                 value = help.getNumber1Regex.Match(mod).Value;
