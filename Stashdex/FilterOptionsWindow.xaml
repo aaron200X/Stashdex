@@ -8,9 +8,21 @@
         mc:Ignorable="d"
         Title="FilterOptionsWindow" Height="300" Width="300">
     <Grid>
-        <ComboBox x:Name="filterMenu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Content="Elemental Resistance"/>
-        </ComboBox>
         <Button x:Name="button" Content="Filter" HorizontalAlignment="Left" Margin="208,10,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="217" Margin="25,21,0,0" VerticalAlignment="Top" Width="100">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <ListBoxItem/>
+            <ListBoxItem/>
+            <ListBoxItem/>
+            <ListBoxItem/>
+            <ListBoxItem/>
+            <ListBoxItem/>
+            <ListBoxItem/>
+            <ListBoxItem/>
+        </ListView>
     </Grid>
 </Window>

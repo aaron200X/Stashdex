@@ -79,11 +79,6 @@ namespace Stashdex {
         //}
 
 
-
-        //public List<string> filterMods {
-        //    get { return getFilterMods(); }
-        //}
-
         /// <summary>
         /// fills the extrafields that I threw in the Item Class.
         /// </summary>
@@ -103,7 +98,6 @@ namespace Stashdex {
             if (craftedMods != null) allMods?.AddRange(craftedMods);
             if (utilityMods != null) allMods?.AddRange(utilityMods);
             if (enchantMods != null) allMods?.AddRange(enchantMods);
-            //if (implicitMods != null) allMods?.Concat(implicitMods).Concat(explicitMods).Concat(craftedMods).Concat(utilityMods).Concat(enchantMods);
         }
 
         /// <summary>
@@ -111,11 +105,22 @@ namespace Stashdex {
         /// </summary>
         public void fillAllDics() {
             object value;
+            object oldValue;
             string key;
             foreach (string mod in allMods) {
                 value = help.getNumber1Regex.Match(mod).Value;
-                key = mod.Replace(value.ToString(), "#");
-                allModsDic.Add(key, value);
+                if (!string.IsNullOrEmpty(value.ToString())) {
+                    key = mod.Replace(value.ToString(), "#");
+                } else {
+                    key = mod;
+
+                }
+                if (allModsDic.ContainsKey(key)) {
+                    //TODO - rechne die Werte zusammen
+                    //allModsDic[key]
+                } else {
+                    allModsDic.Add(key, value);
+                }
             }
         }
 
