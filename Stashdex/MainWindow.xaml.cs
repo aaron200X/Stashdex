@@ -30,6 +30,9 @@ namespace Stashdex
             jsonImport.import();
         }
         
+        //TODO - FUnktion um nur die gefilterten ANzeigen zu zeigen
+
+
 
         public void displayObject(Item item, int counter)
         {

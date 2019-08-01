@@ -153,7 +153,7 @@ namespace Stashdex {
         public int tabNumber { get; set; }
         public bool selected { get; set; }
         public List<Item> items { get; set; }
-        public List<Item> filteredItems { get; set; }
+        public List<Item> filteredItems = new List<Item>();
         public bool quadLayout { get; set; }
     }
 

@@ -24,6 +24,9 @@ namespace Stashdex {
         int value { get; set; }
     }
 
+    /// <summary>
+    /// Mainfunction that gives all Items back, that are found
+    /// </summary>
     public class SearchFunctions {
         public static void search(Filter filter) {
             foreach (Stash stash in Stashes.stashes) {
