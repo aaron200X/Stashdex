@@ -25,7 +25,9 @@ namespace Stashdex
         }
 
         private void button_Click(object sender, RoutedEventArgs e) {
-            //filterMenu.SetCurrentValue
+            Filter filter = new Filter();
+            filter.filtername = SearchFunctions.giveBackFilterBox(this);
+            SearchFunctions.search(filter);
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {

@@ -25,6 +25,7 @@ namespace Stashdex
                     }
                 }
             }
+            //TODO Mods mit 2 Zahlen fixen
             absolutelyAllMods.Sort();
             
         }

@@ -15,6 +15,7 @@ namespace Stashdex
         public static void import()
         {
             //importTxt.Text = File.ReadAllText("../../TextFile1.txt");
+            //TODO beim durchgehen der Stashes, die Nummer mitzählen und die ID eintragen
             Stash stash = JsonConvert.DeserializeObject<Stash>(File.ReadAllText("../../TextFile1.txt"));
             //KOmme nicht an die Items bei der Erstellung ran. laufe also anschließend durch
             foreach (Item item in stash.items) {

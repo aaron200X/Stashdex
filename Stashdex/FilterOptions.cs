@@ -10,14 +10,36 @@ namespace Stashdex {
         List<Filter> filter;
     }
 
-    public class Filter {
-        string Filtername;
-        int value;
+    public class filteredItems {
+        //Stash stash;
+        
+
+        void getItem() {
+
+        }
     }
 
-    public class SearchFunctions{
-        public void search(List<Item> itemlist, List<FilterOptions> filter){
+    public class Filter {
+        public string filtername { get; set; }
+        int value { get; set; }
+    }
 
+    public class SearchFunctions {
+        public static void search(Filter filter) {
+            foreach (Stash stash in Stashes.stashes) {
+                foreach (var item in stash.items) {
+                    foreach (string mods in item.allModsDic.Keys) {
+                        if (mods.Contains(filter.filtername)) {
+                            stash.filteredItems.Add(item);
+                        }
+                    }
+                }
+            }
+        }
+
+        public static string giveBackFilterBox(FilterOptionsWindow filterWindow) {
+            ListBoxItem X = (ListBoxItem)filterWindow.filterBox.SelectedValue;
+            return X.Content.ToString();
         }
 
         public static void fillFilterBox(FilterOptionsWindow filterWindow) {
@@ -28,17 +50,9 @@ namespace Stashdex {
                 item.Content = mod;
                 filterWindow.filterBox.Items.Add(item);
             }
-            
 
-            
         }
 
     }
 
-    
-
-
-
-    
-  
 }

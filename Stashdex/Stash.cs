@@ -150,7 +150,10 @@ namespace Stashdex {
 
     public class Stash {
         public int numTabs { get; set; }
+        public int tabNumber { get; set; }
+        public bool selected { get; set; }
         public List<Item> items { get; set; }
+        public List<Item> filteredItems { get; set; }
         public bool quadLayout { get; set; }
     }
 
