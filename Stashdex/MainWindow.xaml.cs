@@ -148,7 +148,6 @@ namespace Stashdex
                     if (index >= 0)
                     {
                         Item item = Stashes.stashes[0].items[index];
-                        itemNameBox.Text = item.typeLine;
 
                         Thickness margin = itemPreviewCanvas.Margin;
                         margin.Left = Mouse.GetPosition(this).X + 10;
@@ -240,12 +239,8 @@ namespace Stashdex
                     break;
 
             }
-            
-
-            
-
+ 
                 //Setzt die Breite
-                sizeDebug.Text = biggestWidth.ToString();
             
             itemPreviewCanvas.Width = biggestWidth + 20;
             previewBorder.Width = biggestWidth + 20;
@@ -275,6 +270,7 @@ namespace Stashdex
 
         private void filterOptionsButton_Click(object sender, RoutedEventArgs e)
         {
+            //TODO preventing multiple Windows 
             FilterOptionsWindow filterWindow = new FilterOptionsWindow();
             SearchFunctions.fillFilterBox(filterWindow);
             

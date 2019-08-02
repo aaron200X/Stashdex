@@ -26,7 +26,12 @@ namespace Stashdex
 
         private void button_Click(object sender, RoutedEventArgs e) {
             Filter filter = new Filter();
-            filter.filtername = SearchFunctions.giveBackFilterBox(this);
+            //filter.filtername = SearchFunctions.giveBackFilterBox(this);
+            filter.filtername = filterModTxtBox.Text;
+
+            if(numberMinTxtBox.Text != "") filter.minValue = Convert.ToInt16(numberMinTxtBox.Text);
+            if (numberMaxTxtBox.Text != "") filter.maxValue = Convert.ToInt16(numberMaxTxtBox.Text);
+
             SearchFunctions.search(filter);
         }
 
@@ -34,6 +39,8 @@ namespace Stashdex
 
         }
 
-        
+        private void buttonAdd_Click(object sender, RoutedEventArgs e) {
+            filterModTxtBox.Text = SearchFunctions.giveBackFilterBox(this);
+        }
     }
 }
