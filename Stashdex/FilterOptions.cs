@@ -30,9 +30,10 @@ namespace Stashdex {
         public static void search(Filter filter) {
             foreach (Stash stash in Stashes.stashes) {
                 foreach (var item in stash.items) {
+                    item.isFiltered = false;
                     foreach (string mods in item.allModsDic.Keys) {
                         if (mods.Contains(filter.filtername)) {
-                            stash.filteredItems.Add(item);
+                            //stash.filteredItems.Add(item);
                             item.isFiltered = true;
                         }
                     }
