@@ -17,12 +17,20 @@ using System.Diagnostics;
 
 namespace Stashdex
 {
+    public class verwalter {
+
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         List<object> hitResultsList = new List<object>();
+        List<Canvas> canvasList = new List<Canvas>();
+        List<Image> imageList = new List<Image>();
+        
+
 
         public MainWindow()
         {
@@ -38,6 +46,11 @@ namespace Stashdex
         {
             Canvas c = new Canvas();
             Brush b = new SolidColorBrush(Color.FromArgb(150, 20, 20, 100));
+            if (item.isFiltered) {
+                b = new SolidColorBrush(Color.FromArgb(255, 255, 255, 100));
+
+            }
+
             c.Background = b;
             c.Name = "itemCanvas_" + counter;
 
@@ -53,22 +66,44 @@ namespace Stashdex
             Grid.SetColumnSpan(itemImage, item.w);
             Grid.SetRow(itemImage, item.y);
             Grid.SetRowSpan(itemImage, item.h);
+            
+
             g.Children.Add(c);
             c.Children.Add(itemImage);
 
             g.MouseMove += new MouseEventHandler(myPanel_MouseMove);
             g.MouseLeave += new MouseEventHandler(myPanel_MouseLeave);
+
+            canvasList.Add(c);
+            imageList.Add(itemImage);
         }
 
+        /// <summary>
+        /// Den Grid säubern
+        /// </summary>
+        /// <param name="counter"></param>
+        public void deleteDisplayObject(int counter) {
+            try {
+                if (canvasList.Count >= 1 && canvasList[counter] != null) canvasList[counter] = null;
+                if (imageList.Count >= 1 && imageList[counter] != null) imageList[counter] = null;
+            } catch (Exception) {
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
+            }
+            
+        }
+
+        public void displayAllItems() {
             int i = 0;
-            foreach (Item item in Stashes.stashes[0].items)
-            {
+            foreach (Item item in Stashes.stashes[0].items) {
+                deleteDisplayObject(i);
                 displayObject(item, i);
                 i++;
             }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            displayAllItems();
         }
         private void myPanel_MouseLeave(object sender, MouseEventArgs e)
         {

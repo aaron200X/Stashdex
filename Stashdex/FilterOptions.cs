@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-
 namespace Stashdex {
     public class FilterOptions {
         List<Filter> filter;
@@ -34,10 +33,16 @@ namespace Stashdex {
                     foreach (string mods in item.allModsDic.Keys) {
                         if (mods.Contains(filter.filtername)) {
                             stash.filteredItems.Add(item);
+                            item.isFiltered = true;
                         }
                     }
                 }
             }
+
+            //TODO FIND THE REAL WINDOW AND RESET THE DISPLAYED ITEMS
+            MainWindow window = new MainWindow();
+            
+            window.displayAllItems(); 
         }
 
         public static string giveBackFilterBox(FilterOptionsWindow filterWindow) {

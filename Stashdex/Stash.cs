@@ -66,23 +66,24 @@ namespace Stashdex {
         public List<string> filterMods = new List<string>();
         public List<string> allMods = new List<string>();
         public Dictionary<string, object> allModsDic = new Dictionary<string, object>();
-        //public string name
-        //{
-        //    get { return name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
-        //    //set { name = value; }
-        //}
+        public bool isFiltered { get; set; }
+    //public string name
+    //{
+    //    get { return name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
+    //    //set { name = value; }
+    //}
 
-        //public string _typeLine
-        //{
-        //    get { return _typeLine.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
-        //    set { _typeLine = value.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
-        //}
+    //public string _typeLine
+    //{
+    //    get { return _typeLine.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
+    //    set { _typeLine = value.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
+    //}
 
 
-        /// <summary>
-        /// fills the extrafields that I threw in the Item Class.
-        /// </summary>
-        public void fillEverything() {
+    /// <summary>
+    /// fills the extrafields that I threw in the Item Class.
+    /// </summary>
+    public void fillEverything() {
             fillAllMods();
             getFilterMods();
             if (filterMods != null) allMods?.AddRange(filterMods);
@@ -155,6 +156,7 @@ namespace Stashdex {
         public List<Item> items { get; set; }
         public List<Item> filteredItems = new List<Item>();
         public bool quadLayout { get; set; }
+
     }
 
 
