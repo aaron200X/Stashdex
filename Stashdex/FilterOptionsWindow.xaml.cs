@@ -56,7 +56,6 @@ namespace Stashdex
             ListBoxItem X = (ListBoxItem)filterWindow.filterBox.SelectedValue;
             if (X != null) {
                 return X.Content.ToString();
-
             } else {
                 return "";
             }

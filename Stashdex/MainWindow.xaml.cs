@@ -37,9 +37,11 @@ namespace Stashdex
             Canvas c = new Canvas();
             //Filtered items will shown yellow
             Brush b = new SolidColorBrush(Color.FromArgb(150, 20, 20, 100));
+            if (!item.identified) {
+                b = new SolidColorBrush(Color.FromArgb(150, 150, 0, 0));
+            }
             if (item.isFiltered) {
-                b = new SolidColorBrush(Color.FromArgb(255, 255, 255, 100));
-
+                b = new SolidColorBrush(Color.FromArgb(150, 255, 255, 0));
             }
 
             c.Background = b;
