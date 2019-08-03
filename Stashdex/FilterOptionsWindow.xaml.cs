@@ -26,13 +26,26 @@ namespace Stashdex
         }
 
         private void button_Click(object sender, RoutedEventArgs e) {
+            List<Filter> filterlist = new List<Filter>();
             Filter filter = new Filter();
-            filter.filtername = filterModTxtBox.Text;
+            string suffixNumber = "";
 
-            if(numberMinTxtBox.Text != "") filter.minValue = Convert.ToInt16(numberMinTxtBox.Text);
-            if (numberMaxTxtBox.Text != "") filter.maxValue = Convert.ToInt16(numberMaxTxtBox.Text);
 
-            SearchFunctions.search(filter);
+            foreach (TextBox tb in FindVisualChildren<TextBox>(this)) {
+                if (tb.Name.Contains("filterModTxtBox") && !string.IsNullOrEmpty(tb.Text)) {
+                    filter = new Filter();
+                    suffixNumber = tb.Name.Split('_').Last();
+                    filter.filtername = tb.Text;
+                }
+                if (tb.Name == $"numberMinTxtBox_{suffixNumber}") {
+                    if (tb.Text != "") filter.minValue = Convert.ToInt16(tb.Text);
+                }
+                if (tb.Name == $"numberMaxTxtBox_{suffixNumber}") {
+                    if (tb.Text != "") filter.maxValue = Convert.ToInt16(tb.Text);
+                    filterlist.Add(filter);
+                }
+            }
+                SearchFunctions.search(filterlist);
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -95,6 +108,12 @@ namespace Stashdex
 
         }
 
+        /// <summary>
+        /// You can go through all objects of a type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="depObj"></param>
+        /// <returns></returns>
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject {
             if (depObj != null) {
                 for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++) {
@@ -110,15 +129,6 @@ namespace Stashdex
             }
         }
 
-        //public static getStuff() {
-        //    int i = 0;
-        //    foreach (Control contrl in Control) {
-        //        if (contrl.Name == ("DateTextBox" + i.ToString())) {
-        //            contrl.Text = "requiredtexttobeset";
-        //        }
-        //        i = i + 1;
-        //    }
-        //}
 
     }
 }
