@@ -28,7 +28,6 @@ namespace Stashdex
     {
         List<object> hitResultsList = new List<object>();
         List<Canvas> canvasList = new List<Canvas>();
-        List<Image> imageList = new List<Image>();
         
 
 
@@ -38,13 +37,10 @@ namespace Stashdex
             jsonImport.import();
         }
         
-        //TODO - FUnktion um nur die gefilterten ANzeigen zu zeigen
-
-
-
         public void displayObject(Item item, int counter)
         {
             Canvas c = new Canvas();
+            //Filtered items will shown yellow
             Brush b = new SolidColorBrush(Color.FromArgb(150, 20, 20, 100));
             if (item.isFiltered) {
                 b = new SolidColorBrush(Color.FromArgb(255, 255, 255, 100));
@@ -57,16 +53,11 @@ namespace Stashdex
             Image itemImage = setImage(item.icon);
             itemImage.Name = "itemImg_" + counter;
 
+
             Grid.SetColumn(c, item.x);
             Grid.SetColumnSpan(c, item.w);
             Grid.SetRow(c, item.y);
-            Grid.SetRowSpan(c, item.h);
-
-            Grid.SetColumn(itemImage, item.x);
-            Grid.SetColumnSpan(itemImage, item.w);
-            Grid.SetRow(itemImage, item.y);
-            Grid.SetRowSpan(itemImage, item.h);
-            
+            Grid.SetRowSpan(c, item.h);         
 
             g.Children.Add(c);
             c.Children.Add(itemImage);
@@ -75,27 +66,24 @@ namespace Stashdex
             g.MouseLeave += new MouseEventHandler(myPanel_MouseLeave);
 
             canvasList.Add(c);
-            imageList.Add(itemImage);
         }
 
         /// <summary>
         /// Den Grid säubern
         /// </summary>
         /// <param name="counter"></param>
-        public void deleteDisplayObject(int counter) {
-            try {
-                if (canvasList.Count >= 1 && canvasList[counter] != null) canvasList[counter] = null;
-                if (imageList.Count >= 1 && imageList[counter] != null) imageList[counter] = null;
-            } catch (Exception) {
-
+        public void deleteAllCanvas(){
+            foreach(Canvas c in canvasList) {
+                g.Children.Remove(c);
             }
+            canvasList.Clear();
             
         }
 
         public void displayAllItems() {
+            deleteAllCanvas();
             int i = 0;
             foreach (Item item in Stashes.stashes[0].items) {
-                deleteDisplayObject(i);
                 displayObject(item, i);
                 i++;
             }
