@@ -56,8 +56,6 @@ namespace Stashdex {
             win.displayAllItems();
         }
 
-        //TODO FIND THE REAL WINDOW AND RESET THE DISPLAYED ITEMS
-
         /// <summary>
         /// gives back the selected Value from the filterbox
         /// </summary>

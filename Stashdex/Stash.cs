@@ -105,22 +105,43 @@ namespace Stashdex {
         /// creates the mods in form of a dictionary to easier handling the numbers
         /// </summary>
         public void fillAllDics() {
-            object value;
+            object value1 = new object();
+            object value2 = new object();
+            object valueTogether = new object();
             //object oldValue;
             string key;
             foreach (string mod in allMods) {
-                value = help.getNumber1Regex.Match(mod).Value;
-                if (!string.IsNullOrEmpty(value.ToString())) {
-                    key = mod.Replace(value.ToString(), "#");
-                } else {
-                    key = mod;
+                value1 = new object();
+                value2 = new object();
+                valueTogether = new object();
 
+                if (help.getNumber2Regex.IsMatch(mod)) {
+                    value2 = help.getNumber2Regex.Match(mod).Groups[1].Value;
                 }
+
+               //TODO Let it work with commaseparated Values
+
+                //Replace the numbers with the #
+                value1 = help.getNumber1Regex.Match(mod).Value;
+                key = mod;
+                if (help.getNumber1Regex.IsMatch(value2.ToString())) {
+                    key = key.Replace(value2.ToString(), "#"); 
+                }
+                if (help.getNumber1Regex.IsMatch(value1.ToString())) {
+                    key = key.Replace(value1.ToString(), "#");
+                }
+
+                if (help.getNumber1Regex.IsMatch(value1.ToString()) && help.getNumber1Regex.IsMatch(value2.ToString())) {
+                    valueTogether = (Convert.ToInt16(value1) + Convert.ToInt16(value2) / 2);
+                } else if (help.getNumber1Regex.IsMatch(value1.ToString())){
+                    valueTogether = Convert.ToInt16(value1);
+                }
+
                 if (allModsDic.ContainsKey(key)) {
                     //TODO - rechne die Werte zusammen
                     //allModsDic[key]
                 } else {
-                    allModsDic.Add(key, value);
+                    allModsDic.Add(key, valueTogether);
                 }
             }
         }
