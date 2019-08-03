@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace Stashdex
 {
     /// <summary>
@@ -41,9 +42,27 @@ namespace Stashdex
         //TODO Programm LOESCHBUTTON
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e) {
-            //foreach ( Control x i)
-               
-            filterModTxtBox.Text = giveBackFilterBox(this);
+            //foreach (var item in Control.) {
+
+            //}
+
+            //HIER WEITERMACHEN!!!
+            foreach (TextBox tb in FindVisualChildren<TextBox>(this)) {
+                if (tb.Name.Contains("filterModTxtBox"))  {
+                    if (string.IsNullOrEmpty(tb.Text)) {
+                        tb.Text = giveBackFilterBox(this);
+                        break;
+                    }
+                    if (!string.IsNullOrEmpty(tb.Text) && tb.Text == giveBackFilterBox(this)) {
+                        break;
+                    }
+
+
+                }
+            }
+            //TODO - go through all fucking non existing shit controls
+            
+
         }
 
 
@@ -75,6 +94,31 @@ namespace Stashdex
             }
 
         }
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject {
+            if (depObj != null) {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++) {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T) {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child)) {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+
+        //public static getStuff() {
+        //    int i = 0;
+        //    foreach (Control contrl in Control) {
+        //        if (contrl.Name == ("DateTextBox" + i.ToString())) {
+        //            contrl.Text = "requiredtexttobeset";
+        //        }
+        //        i = i + 1;
+        //    }
+        //}
 
     }
 }
