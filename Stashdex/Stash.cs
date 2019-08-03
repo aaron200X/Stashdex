@@ -67,23 +67,23 @@ namespace Stashdex {
         public List<string> allMods = new List<string>();
         public Dictionary<string, object> allModsDic = new Dictionary<string, object>();
         public bool isFiltered { get; set; }
-    //public string name
-    //{
-    //    get { return name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
-    //    //set { name = value; }
-    //}
+        //public string name
+        //{
+        //    get { return name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
+        //    //set { name = value; }
+        //}
 
-    //public string _typeLine
-    //{
-    //    get { return _typeLine.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
-    //    set { _typeLine = value.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
-    //}
+        //public string _typeLine
+        //{
+        //    get { return _typeLine.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
+        //    set { _typeLine = value.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
+        //}
 
 
-    /// <summary>
-    /// fills the extrafields that I threw in the Item Class.
-    /// </summary>
-    public void fillEverything() {
+        /// <summary>
+        /// fills the extrafields that I threw in the Item Class.
+        /// </summary>
+        public void fillEverything() {
             fillAllMods();
             getFilterMods();
             if (filterMods != null) allMods?.AddRange(filterMods);
@@ -118,23 +118,33 @@ namespace Stashdex {
                 if (help.getNumber2Regex.IsMatch(mod)) {
                     value2 = help.getNumber2Regex.Match(mod).Groups[1].Value;
                 }
-
-               //TODO Let it work with commaseparated Values
-
-                //Replace the numbers with the #
-                value1 = help.getNumber1Regex.Match(mod).Value;
                 key = mod;
-                if (help.getNumber1Regex.IsMatch(value2.ToString())) {
-                    key = key.Replace(value2.ToString(), "#"); 
-                }
-                if (help.getNumber1Regex.IsMatch(value1.ToString())) {
+                if (help.getNumberFloat.IsMatch(mod)) {
+                    //FLOATS
+                    value1 = help.getNumberFloat.Match(mod).Value;
                     key = key.Replace(value1.ToString(), "#");
+                } else {
+                    //NUMBERS
+                    //Replace the numbers with the #
+                    value1 = help.getNumber1Regex.Match(mod).Value;
+                    
+                    if (help.getNumber1Regex.IsMatch(value2.ToString())) {
+                        key = key.Replace(value2.ToString(), "#");
+                        value1 = help.getNumber1Regex.Match(mod).Value; ;
+                    }
+                    if (help.getNumber1Regex.IsMatch(value1.ToString())) {
+                        key = key.Replace(value1.ToString(), "#");
+                    }
                 }
-
-                if (help.getNumber1Regex.IsMatch(value1.ToString()) && help.getNumber1Regex.IsMatch(value2.ToString())) {
+                if (help.getNumber1Regex.IsMatch(value1.ToString()) && help.getNumber2Regex.IsMatch(value2.ToString())) {
                     valueTogether = (Convert.ToInt16(value1) + Convert.ToInt16(value2) / 2);
-                } else if (help.getNumber1Regex.IsMatch(value1.ToString())){
-                    valueTogether = Convert.ToInt16(value1);
+                } else if (help.getNumber1Regex.IsMatch(value1.ToString())) {
+                    try {
+                        valueTogether = Convert.ToInt16(value1);
+                    } catch (Exception) {
+                        valueTogether = Convert.ToDouble(value1);
+                    }
+                    
                 }
 
                 if (allModsDic.ContainsKey(key)) {
