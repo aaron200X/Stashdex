@@ -94,11 +94,17 @@ namespace Stashdex {
         /// Puts all mods in a new mod to easier work
         /// </summary>
         public void fillAllMods() {
+
+            //TODO set implicit, explicit etc Tags
             if (implicitMods != null) allMods?.AddRange(implicitMods);
             if (explicitMods != null) allMods?.AddRange(explicitMods);
             if (craftedMods != null) allMods?.AddRange(craftedMods);
             if (utilityMods != null) allMods?.AddRange(utilityMods);
             if (enchantMods != null) allMods?.AddRange(enchantMods);
+        }
+
+        public void setTags(List<string> mod, string modType) {
+            //
         }
 
         /// <summary>
@@ -115,6 +121,8 @@ namespace Stashdex {
                 value2 = new object();
                 valueTogether = new object();
 
+                //Get presigns (enchanted, pseudo etc)
+                //TODO X1.X1 - X2.X2 UND X1 - X2
                 if (help.getNumber2Regex.IsMatch(mod)) {
                     value2 = help.getNumber2Regex.Match(mod).Groups[1].Value;
                 }

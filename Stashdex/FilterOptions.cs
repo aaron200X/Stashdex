@@ -56,35 +56,7 @@ namespace Stashdex {
             win.displayAllItems();
         }
 
-        /// <summary>
-        /// gives back the selected Value from the filterbox
-        /// </summary>
-        /// <param name="filterWindow"></param>
-        /// <returns></returns>
-        public static string giveBackFilterBox(FilterOptionsWindow filterWindow) {
-            ListBoxItem X = (ListBoxItem)filterWindow.filterBox.SelectedValue;
-            if (X != null) {
-                return X.Content.ToString();
-
-            } else {
-                return "";
-            }
-        }
-
-        /// <summary>
-        /// Collects all mods you found, to show them in your filter
-        /// </summary>
-        /// <param name="filterWindow"></param>
-        public static void fillFilterBox(FilterOptionsWindow filterWindow) {
-            Stashes.getAbsolutelyAllMods();
-
-            foreach (string mod in Stashes.absolutelyAllMods) {
-                ListBoxItem item = new ListBoxItem();
-                item.Content = mod;
-                filterWindow.filterBox.Items.Add(item);
-            }
-
-        }
+     
 
     }
 

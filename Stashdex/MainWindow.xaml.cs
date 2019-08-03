@@ -255,7 +255,7 @@ namespace Stashdex
         {
             //TODO preventing multiple Windows 
             FilterOptionsWindow filterWindow = new FilterOptionsWindow();
-            SearchFunctions.fillFilterBox(filterWindow);
+            FilterOptionsWindow.fillFilterBox(filterWindow);
             
             filterWindow.Show();
         }

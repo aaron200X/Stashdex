@@ -26,7 +26,6 @@ namespace Stashdex
 
         private void button_Click(object sender, RoutedEventArgs e) {
             Filter filter = new Filter();
-            //filter.filtername = SearchFunctions.giveBackFilterBox(this);
             filter.filtername = filterModTxtBox.Text;
 
             if(numberMinTxtBox.Text != "") filter.minValue = Convert.ToInt16(numberMinTxtBox.Text);
@@ -39,8 +38,44 @@ namespace Stashdex
 
         }
 
+        //TODO Programm LOESCHBUTTON
+
         private void buttonAdd_Click(object sender, RoutedEventArgs e) {
-            filterModTxtBox.Text = SearchFunctions.giveBackFilterBox(this);
+            //foreach ( Control x i)
+               
+            filterModTxtBox.Text = giveBackFilterBox(this);
         }
+
+
+        /// <summary>
+        /// gives back the selected Value from the filterbox
+        /// </summary>
+        /// <param name="filterWindow"></param>
+        /// <returns></returns>
+        public static string giveBackFilterBox(FilterOptionsWindow filterWindow) {
+            ListBoxItem X = (ListBoxItem)filterWindow.filterBox.SelectedValue;
+            if (X != null) {
+                return X.Content.ToString();
+
+            } else {
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// Collects all mods you found, to show them in your filter
+        /// </summary>
+        /// <param name="filterWindow"></param>
+        public static void fillFilterBox(FilterOptionsWindow filterWindow) {
+            Stashes.getAbsolutelyAllMods();
+
+            foreach (string mod in Stashes.absolutelyAllMods) {
+                ListBoxItem item = new ListBoxItem();
+                item.Content = mod;
+                filterWindow.filterBox.Items.Add(item);
+            }
+
+        }
+
     }
 }
