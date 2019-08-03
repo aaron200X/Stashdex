@@ -29,22 +29,22 @@ namespace Stashdex {
     /// Mainfunction that gives all Items back, that are found
     /// </summary>
     public class SearchFunctions {
+        static MainWindow win = (MainWindow)App.Current.MainWindow;
+
         public static void search(Filter filter) {
+
             if (filter.filtername != "") {
                 foreach (Stash stash in Stashes.stashes) {
                     foreach (var item in stash.items) {
                         item.isFiltered = false;
                         foreach (string mods in item.allModsDic.Keys) {
-                            if (mods.Contains(filter.filtername)) {
+                            if (mods == filter.filtername) {
                                 //stash.filteredItems.Add(item);
                                 if ((filter.minValue != -99999 || filter.maxValue != 99999)) {
-                                    
                                     //Todo Working on other content Types
                                     if (filter.maxValue >= Convert.ToInt16(item.allModsDic[mods]) && filter.minValue <= Convert.ToInt16(item.allModsDic[mods])) {
-
                                         item.isFiltered = true;
-
-                                    }
+                                    }                                   
                                 } else {
                                     item.isFiltered = true;
                                 }
@@ -52,14 +52,11 @@ namespace Stashdex {
                         }
                     }
                 }
-
             }
-
-            //TODO FIND THE REAL WINDOW AND RESET THE DISPLAYED ITEMS
-            MainWindow window = new MainWindow();
-
-            window.displayAllItems();
+            win.displayAllItems();
         }
+
+        //TODO FIND THE REAL WINDOW AND RESET THE DISPLAYED ITEMS
 
         /// <summary>
         /// gives back the selected Value from the filterbox

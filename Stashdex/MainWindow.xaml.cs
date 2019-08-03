@@ -17,9 +17,6 @@ using System.Diagnostics;
 
 namespace Stashdex
 {
-    public class verwalter {
-
-    }
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -28,8 +25,6 @@ namespace Stashdex
     {
         List<object> hitResultsList = new List<object>();
         List<Canvas> canvasList = new List<Canvas>();
-        
-
 
         public MainWindow()
         {

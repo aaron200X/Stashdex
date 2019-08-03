@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Stashdex {
-    public static class Programm {
-        static void Main() {
+    //public class Programm {
+    //   // public MainWindow mainwindow = new MainWindow();
 
-        }
-    }
-    public class stuff {
-        
-    }
+    //    public static void Main() {
+    //        MainWindow mainwindow2 = new MainWindow();
+    //    }
+    //}
 }
 
