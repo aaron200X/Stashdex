@@ -99,11 +99,15 @@ namespace Stashdex
         /// <param name="filterWindow"></param>
         public static void fillFilterBox(FilterOptionsWindow filterWindow) {
             Stashes.getAbsolutelyAllMods();
+            filterWindow.filterBox.Items.Clear();
 
             foreach (string mod in Stashes.absolutelyAllMods) {
-                ListBoxItem item = new ListBoxItem();
-                item.Content = mod;
-                filterWindow.filterBox.Items.Add(item);
+                if (filterWindow.searchFilterTxtBox.Text == "" || mod.ToLower().Contains(filterWindow.searchFilterTxtBox.Text.ToLower())) {
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = mod;
+                    filterWindow.filterBox.Items.Add(item);
+                }
+               
             }
 
         }
@@ -129,6 +133,8 @@ namespace Stashdex
             }
         }
 
-
+        private void searchFilterTxtBox_TextChanged(object sender, TextChangedEventArgs e) {
+            fillFilterBox(this);
+        }
     }
 }

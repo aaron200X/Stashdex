@@ -9,7 +9,7 @@
         Title="FilterOptionsWindow" Height="600" Width="800">
     <Grid>
         <Button x:Name="button" Content="Filter" HorizontalAlignment="Left" Margin="708,541,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <ListBox x:Name="filterBox" HorizontalAlignment="Left" Height="382" Margin="10,10,0,0" VerticalAlignment="Top" Width="693" RenderTransformOrigin="0.531,0.536" SelectionChanged="listBox_SelectionChanged"/>
+        <ListBox x:Name="filterBox" HorizontalAlignment="Left" Height="354" Margin="10,38,0,0" VerticalAlignment="Top" Width="693" RenderTransformOrigin="0.531,0.536" SelectionChanged="listBox_SelectionChanged"/>
         <Button x:Name="buttonAdd" Content="Add" HorizontalAlignment="Left" Margin="708,10,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdd_Click"/>
         <TextBox x:Name="filterModTxtBox_1" HorizontalAlignment="Left" Height="23" Margin="10,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495"/>
         <TextBox x:Name="numberMinTxtBox_1" HorizontalAlignment="Left" Height="23" Margin="510,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
@@ -35,5 +35,6 @@
         <TextBox x:Name="numberMinTxtBox_6" HorizontalAlignment="Left" Height="23" Margin="510,520,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
         <TextBox x:Name="numberMaxTxtBox_6" HorizontalAlignment="Left" Height="23" Margin="583,520,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
         <Button x:Name="deleteButton_1" Content="X" HorizontalAlignment="Left" Margin="656,523,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
+        <TextBox x:Name="searchFilterTxtBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="693" TextChanged="searchFilterTxtBox_TextChanged"/>
     </Grid>
 </Window>

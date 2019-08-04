@@ -40,6 +40,7 @@ namespace Stashdex {
                                     //stash.filteredItems.Add(item);
                                     if ((filter.minValue != -99999 || filter.maxValue != 99999)) {
                                         //Todo Working on other content Types
+                                        //min or Max value filled
                                         if (filter.maxValue >= Convert.ToInt16(item.allModsDic[mods]) && filter.minValue <= Convert.ToInt16(item.allModsDic[mods])) {
                                             if (filterlist.IndexOf(filter) == 0) {
                                                 lastFilteredItems.Add(item);
@@ -49,6 +50,7 @@ namespace Stashdex {
                                             }
                                         }
                                     } else {
+                                        //min and max value not filled
                                         if (filterlist.IndexOf(filter) == 0) {
                                             lastFilteredItems.Add(item);
                                             currentfilteredItems.Add(item);
