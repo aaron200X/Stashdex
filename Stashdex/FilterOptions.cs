@@ -64,8 +64,10 @@ namespace Stashdex {
                     }
                 }
             }
+            Stashes.allFilteredItems.Clear();
             foreach (Item item in currentfilteredItems) {
                 item.isFiltered = true;
+                Stashes.allFilteredItems.Add(item);
             }
 
             win.displayAllItems();

@@ -46,6 +46,7 @@ namespace Stashdex
                 }
             }
                 SearchFunctions.search(filterlist);
+            this.foundCounterLbl.Content = Stashes.allFilteredItems.Count();
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -54,12 +55,14 @@ namespace Stashdex
 
         //TODO Programm LOESCHBUTTON
 
+            /// <summary>
+            /// Click on the addbutton added that chosen mod to the filtered mods
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
         private void buttonAdd_Click(object sender, RoutedEventArgs e) {
-            //foreach (var item in Control.) {
+  
 
-            //}
-
-            //HIER WEITERMACHEN!!!
             foreach (TextBox tb in FindVisualChildren<TextBox>(this)) {
                 if (tb.Name.Contains("filterModTxtBox"))  {
                     if (string.IsNullOrEmpty(tb.Text)) {
@@ -73,7 +76,6 @@ namespace Stashdex
 
                 }
             }
-            //TODO - go through all fucking non existing shit controls
             
 
         }

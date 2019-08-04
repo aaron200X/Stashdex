@@ -9,7 +9,7 @@ namespace Stashdex
     public static class Stashes
     {
         public static List<Stash> stashes = new List<Stash>();
-
+        public static List<Item> allFilteredItems = new List<Item>();
         public static List<string> absolutelyAllMods = new List<string>();
 
         /// <summary>

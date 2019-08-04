@@ -36,5 +36,7 @@
         <TextBox x:Name="numberMaxTxtBox_6" HorizontalAlignment="Left" Height="23" Margin="583,520,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
         <Button x:Name="deleteButton_1" Content="X" HorizontalAlignment="Left" Margin="656,523,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
         <TextBox x:Name="searchFilterTxtBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="693" TextChanged="searchFilterTxtBox_TextChanged"/>
+        <Label x:Name="foundCounterLbl" Content="0" HorizontalAlignment="Left" Margin="708,67,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="foundCounterLbl_Copy" Content="Items found:" HorizontalAlignment="Left" Margin="708,35,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
