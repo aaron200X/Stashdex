@@ -11,31 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Stashdex\jsonImport.cs = Stashdex\jsonImport.cs
 		Stashdex\mainScreen.cs = Stashdex\mainScreen.cs
 		Stashdex\Program.cs = Stashdex\Program.cs
-		Stashdex\pics\QuadStashPanelGrid.png = Stashdex\pics\QuadStashPanelGrid.png
 		Stashdex\Stash.cs = Stashdex\Stash.cs
 		Stashdex\Stashes.cs = Stashdex\Stashes.cs
-		Stashdex\pics\StashPanelGrid.png = Stashdex\pics\StashPanelGrid.png
 		Stashdex\TextFile1.txt = Stashdex\TextFile1.txt
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sockets", "sockets", "{03F09384-40C0-466D-A34F-53F1FFC80FE8}"
-	ProjectSection(SolutionItems) = preProject
-		Stashdex\pics\Sockets\abyssal-socketed.png = Stashdex\pics\Sockets\abyssal-socketed.png
-		Stashdex\pics\Sockets\abyssal.png = Stashdex\pics\Sockets\abyssal.png
-		Stashdex\pics\Sockets\blue-socketed-white.png = Stashdex\pics\Sockets\blue-socketed-white.png
-		Stashdex\pics\Sockets\blue-socketed.png = Stashdex\pics\Sockets\blue-socketed.png
-		Stashdex\pics\Sockets\blue.png = Stashdex\pics\Sockets\blue.png
-		Stashdex\pics\Sockets\green-socketed-white.png = Stashdex\pics\Sockets\green-socketed-white.png
-		Stashdex\pics\Sockets\green-socketed.png = Stashdex\pics\Sockets\green-socketed.png
-		Stashdex\pics\Sockets\green.png = Stashdex\pics\Sockets\green.png
-		Stashdex\pics\Sockets\link-horizontal.png = Stashdex\pics\Sockets\link-horizontal.png
-		Stashdex\pics\Sockets\link-vertical.png = Stashdex\pics\Sockets\link-vertical.png
-		Stashdex\pics\Sockets\red-socketed-white.png = Stashdex\pics\Sockets\red-socketed-white.png
-		Stashdex\pics\Sockets\red-socketed.png = Stashdex\pics\Sockets\red-socketed.png
-		Stashdex\pics\Sockets\red.png = Stashdex\pics\Sockets\red.png
-		Stashdex\pics\Sockets\white-socketed-white.png = Stashdex\pics\Sockets\white-socketed-white.png
-		Stashdex\pics\Sockets\white-socketed.png = Stashdex\pics\Sockets\white-socketed.png
-		Stashdex\pics\Sockets\white.png = Stashdex\pics\Sockets\white.png
 	EndProjectSection
 EndProject
 Global
@@ -51,8 +29,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{03F09384-40C0-466D-A34F-53F1FFC80FE8} = {2DB37605-1406-4A1B-A2F5-FF6A36794122}
 	EndGlobalSection
 EndGlobal

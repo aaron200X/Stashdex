@@ -120,23 +120,28 @@
   <ItemGroup>
     <Resource Include="TextFile1.txt" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Resource Include="sockets\abyssal-socketed.png" />
-    <Resource Include="sockets\abyssal.png" />
-    <Resource Include="sockets\blue-socketed-white.png" />
-    <Resource Include="sockets\blue-socketed.png" />
-    <Resource Include="sockets\blue.png" />
-    <Resource Include="sockets\green-socketed-white.png" />
-    <Resource Include="sockets\green-socketed.png" />
-    <Resource Include="sockets\green.png" />
-    <Resource Include="sockets\link-horizontal.png" />
-    <Resource Include="sockets\link-vertical.png" />
-    <Resource Include="sockets\red-socketed-white.png" />
-    <Resource Include="sockets\red-socketed.png" />
-    <Resource Include="sockets\red.png" />
-    <Resource Include="sockets\white-socketed-white.png" />
-    <Resource Include="sockets\white-socketed.png" />
-    <Resource Include="sockets\white.png" />
+    <Resource Include="pics\sockets\abyssal-socketed.png" />
+    <Resource Include="pics\sockets\abyssal.png" />
+    <Resource Include="pics\sockets\blue-socketed-white.png" />
+    <Resource Include="pics\sockets\blue-socketed.png" />
+    <Resource Include="pics\sockets\blue.png" />
+    <Resource Include="pics\sockets\green-socketed-white.png" />
+    <Resource Include="pics\sockets\green-socketed.png" />
+    <Resource Include="pics\sockets\green.png" />
+    <Resource Include="pics\sockets\link-horizontal.png" />
+    <Resource Include="pics\sockets\link-vertical.png" />
+    <Resource Include="pics\sockets\red-socketed-white.png" />
+    <Resource Include="pics\sockets\red-socketed.png" />
+    <Resource Include="pics\sockets\red.png" />
+    <Resource Include="pics\sockets\white-socketed-white.png" />
+    <Resource Include="pics\sockets\white-socketed.png" />
+    <Resource Include="pics\sockets\white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pics\QuadStashPanelGrid.png" />
+    <Resource Include="pics\StashPanelGrid.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
