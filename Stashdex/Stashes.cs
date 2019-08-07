@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stashdex
-{
-    public static class Stashes
-    {
+namespace Stashdex {
+    public static class Stashes {
         public static List<Stash> stashes = new List<Stash>();
         public static List<Item> allFilteredItems = new List<Item>();
         public static List<string> absolutelyAllMods = new List<string>();
@@ -27,8 +25,11 @@ namespace Stashdex
             }
             //TODO Mods mit 2 Zahlen fixen
             absolutelyAllMods.Sort();
-            
+        }
 
-    }
+        public static List<Stash> getOnlineStashes() {
+            return new List<Stash>();
+
+        }
     }
 }
