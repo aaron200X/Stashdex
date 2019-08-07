@@ -88,6 +88,8 @@ namespace Stashdex
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password);
+
             displayAllItems();
         }
         private void myPanel_MouseLeave(object sender, MouseEventArgs e)
