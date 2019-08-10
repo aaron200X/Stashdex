@@ -126,6 +126,9 @@ namespace Stashdex {
                 if (help.getNumber2Regex.IsMatch(mod)) {
                     value2 = help.getNumber2Regex.Match(mod).Groups[1].Value;
                 }
+                if (help.getNumber2Regex2.IsMatch(mod)) {
+                    value2 = help.getNumber2Regex2.Match(mod).Groups[1].Value;
+                }
                 key = mod;
                 if (help.getNumberFloat.IsMatch(mod)) {
                     //FLOATS

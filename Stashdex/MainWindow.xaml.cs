@@ -262,13 +262,11 @@ namespace Stashdex
 
         private void button_Click(object sender, RoutedEventArgs e) {
             Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password);
-
             displayAllItems();
         }
 
         private void localButton_Click(object sender, RoutedEventArgs e) {
             Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password, true);
-
             displayAllItems();
         }
     }
