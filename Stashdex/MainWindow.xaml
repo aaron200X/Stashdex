@@ -52,7 +52,7 @@
 
         </Canvas>
         <Button x:Name="filterOptionsButton" Content="Filteroptionen" HorizontalAlignment="Left" Margin="1070,132,0,0" VerticalAlignment="Top" Width="125" Height="48" Click="filterOptionsButton_Click"/>
-        <PasswordBox x:Name="poeidPwBox" HorizontalAlignment="Left" Margin="355,61,0,0" VerticalAlignment="Top" Height="47" Width="569" FontSize="24"/>
+        <PasswordBox x:Name="poeidPwBox" HorizontalAlignment="Left" Margin="355,61,0,0" VerticalAlignment="Top" Height="47" Width="569" FontSize="24" Password=""/>
         <Label x:Name="label" Content="POEID" HorizontalAlignment="Left" Margin="355,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.528,0.405" FontSize="24"/>
         <TextBox x:Name="nameTxtBox" HorizontalAlignment="Left" Height="47" Margin="46,61,0,0" TextWrapping="Wrap" Text="aaron2005" VerticalAlignment="Top" Width="268" FontSize="24"/>
         <Label x:Name="statusLabel" Content="" HorizontalAlignment="Left" Margin="46,132,0,0" VerticalAlignment="Top" Width="268"/>

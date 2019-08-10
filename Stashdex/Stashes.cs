@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Collections.Specialized;
 
+
 namespace Stashdex {
     public static class Stashes {
         public static List<Stash> stashes = new List<Stash>();
         public static List<Item> allFilteredItems = new List<Item>();
         public static List<string> absolutelyAllMods = new List<string>();
+        static MainWindow win = (MainWindow)App.Current.MainWindow;
 
         /// <summary>
         /// Creates a List with all mods, that exists in your stash
@@ -32,7 +34,7 @@ namespace Stashdex {
         public static void getOnlineStashes(string name, string poeid) {
             jsonImport.clearStash();
             string response;
-            int tabIndex = 0; 
+            int tabIndex = 0;
             //TODO, hole Anzahl der Tabs und loope durch
             string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex={tabIndex}&accountName={name}";
             CookieContainer coocCont = new CookieContainer();
@@ -44,27 +46,36 @@ namespace Stashdex {
                 response = webClient.DownloadString(adress);
                 jsonImport.import(response);
                 //Getting all Tabs
-                
-                for (int i = tabIndex; i < stashes[0].numTabs - 1; tabIndex++) {
+                //DEBUG
+                //while (tabIndex < stashes[0].numTabs) {
+                while (tabIndex < 15) {
+                    tabIndex++;
+                    adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex={tabIndex}&accountName={name}";
                     response = webClient.DownloadString(adress);
                     jsonImport.import(response);
+                    //TODO: Zeige Update im Form
+                    win.statusLabel.Content = $"fetching tabs: {tabIndex + 1} / {stashes[0].numTabs}";
                 }
+                
             }
+            win.statusLabel.Content = "";
         }
+
+
     }
 
-/// <summary>
-/// A (slightly) better version of .Net's default <see cref="WebClient"/>.
-/// The extra features include:
-/// ability to disable automatic redirect handling,
-/// sessions through a cookie container,
-/// indicate to the webserver that GZip compression can be used,
-/// exposure of the HTTP status code of the last request,
-/// exposure of any response header of the last request,
-/// ability to modify the request before it is send.
-/// </summary>
-/// <seealso cref="System.Net.WebClient" />
-public class BetterWebClient : WebClient {
+    /// <summary>
+    /// A (slightly) better version of .Net's default <see cref="WebClient"/>.
+    /// The extra features include:
+    /// ability to disable automatic redirect handling,
+    /// sessions through a cookie container,
+    /// indicate to the webserver that GZip compression can be used,
+    /// exposure of the HTTP status code of the last request,
+    /// exposure of any response header of the last request,
+    /// ability to modify the request before it is send.
+    /// </summary>
+    /// <seealso cref="System.Net.WebClient" />
+    public class BetterWebClient : WebClient {
         private WebRequest _request = null;
 
         /// <summary>
