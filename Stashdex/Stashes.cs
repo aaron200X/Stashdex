@@ -62,7 +62,8 @@ namespace Stashdex {
                                 response = webClient.DownloadString(adress);
 
                             } catch (Exception ex) {
-
+                            Console.Write(ex.Message);
+                            System.Threading.Thread.Sleep(10000);
                             response = webClient.DownloadString(adress);
                         }
                     } else {
@@ -108,7 +109,7 @@ namespace Stashdex {
         }
 
         public static string loadStashLocal(int tabIndex) {
-            if (!Directory.Exists("Stashes")) {
+            if (File.Exists($"Stashes/S{tabIndex}.txt")) {
                 return File.ReadAllText($"Stashes/S{tabIndex}.txt");
             } else {
                 return "";
