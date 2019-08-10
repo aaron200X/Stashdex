@@ -263,5 +263,9 @@ namespace Stashdex
             
             filterWindow.Show();
         }
+
+        public static updateLable() {
+            this.statusLabel.Content = "";
+        }
     }
 }

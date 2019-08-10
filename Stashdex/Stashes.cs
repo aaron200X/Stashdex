@@ -30,18 +30,25 @@ namespace Stashdex {
         }
 
         public static void getOnlineStashes(string name, string poeid) {
-
-            string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex=11&accountName={name}";
+            jsonImport.clearStash();
+            string response;
+            int tabIndex = 0; 
+            //TODO, hole Anzahl der Tabs und loope durch
+            string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex={tabIndex}&accountName={name}";
             CookieContainer coocCont = new CookieContainer();
             Cookie cook = new Cookie("POESESSID", poeid) { Domain = "pathofexile.com" };
+            tabIndex++;
             coocCont.Add(cook);
+            //First try to get the number of Tabs
             using (BetterWebClient webClient = new BetterWebClient(coocCont)) {
+                response = webClient.DownloadString(adress);
+                jsonImport.import(response);
+                //Getting all Tabs
                 
-                string response = webClient.DownloadString(adress);
-
-                Console.Write(response);
-
-                //return new List<Stash>();
+                for (int i = tabIndex; i < stashes[0].numTabs - 1; tabIndex++) {
+                    response = webClient.DownloadString(adress);
+                    jsonImport.import(response);
+                }
             }
         }
     }

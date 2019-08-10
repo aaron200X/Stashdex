@@ -29,7 +29,6 @@ namespace Stashdex
         }
 
         public static void import(string text) {
-            Stashes.stashes.Clear();
 
             Stash stash = JsonConvert.DeserializeObject<Stash>(text);
             //KOmme nicht an die Items bei der Erstellung ran. laufe also anschließend durch
@@ -38,6 +37,10 @@ namespace Stashdex
             }
             //Stash stash = JsonConvert.DeserializeObject<Stash>(importTxt.Text);
             Stashes.stashes.Add(stash);
+        }
+
+        public static void clearStash() {
+            Stashes.stashes.Clear();
         }
 
     }
