@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Collections.Specialized;
-
+using System.IO;
 
 namespace Stashdex {
     public static class Stashes {
@@ -33,30 +33,34 @@ namespace Stashdex {
 
         public static void getOnlineStashes(string name, string poeid) {
             jsonImport.clearStash();
-            string response;
+            string response = "";
             int tabIndex = 0;
             //TODO, hole Anzahl der Tabs und loope durch
             string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex={tabIndex}&accountName={name}";
             CookieContainer coocCont = new CookieContainer();
             Cookie cook = new Cookie("POESESSID", poeid) { Domain = "pathofexile.com" };
-            tabIndex++;
             coocCont.Add(cook);
             //First try to get the number of Tabs
             using (BetterWebClient webClient = new BetterWebClient(coocCont)) {
                 response = webClient.DownloadString(adress);
                 jsonImport.import(response);
+                saveStashesLocal(tabIndex, response);
+                tabIndex++;
                 //Getting all Tabs
                 //DEBUG
                 //while (tabIndex < stashes[0].numTabs) {
                 while (tabIndex < 15) {
-                    tabIndex++;
-                    adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex={tabIndex}&accountName={name}";
+                    response = "";
+                    adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex={tabIndex}&accountName={name}"; 
                     response = webClient.DownloadString(adress);
                     jsonImport.import(response);
                     //TODO: Zeige Update im Form
                     win.statusLabel.Content = $"fetching tabs: {tabIndex + 1} / {stashes[0].numTabs}";
+                    saveStashesLocal(tabIndex, response);
+                    tabIndex++;
+
                 }
-                
+
             }
             win.statusLabel.Content = "";
         }
@@ -76,6 +80,24 @@ namespace Stashdex {
 
                 jsonImport.import(response);
             }
+        }
+
+        public static void saveStashesLocal(int tabIndex, string response) {
+            if (!Directory.Exists("Stashes")) {
+                Directory.CreateDirectory("Stashes");
+            }
+
+            using (StreamWriter sw = File.CreateText($"Stashes/S{tabIndex}.txt")) {
+                sw.Write(response);
+                
+            }
+
+            //if (!File.Exists(")) {
+            //    File.CreateText($"Stashes/S{tabIndex}.txt");
+            //}
+            //File.OpenText($"Stashes/S{tabIndex}.txt");
+            
+            
         }
 
     }
