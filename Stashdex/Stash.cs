@@ -202,6 +202,7 @@ namespace Stashdex {
         public int i { get; set; }
         public Colour colour { get; set; }
         public List<Tab> tabs { get; set; }
+        public bool hasFilteredItem { get; set; }
 
     }
 

@@ -254,21 +254,24 @@ namespace Stashdex
             return image;
         }
 
-        private void fillStashList() {
+        public void fillStashList() {
+            listBoxStashes.Items.Clear();
             foreach (var stash in Stashes.stashes) {
                 ListBoxItem listBoxI = new ListBoxItem();
                 listBoxI.Content = stash.n;
 
+                
+                int grayScale = (int)((stash.colour.r * .3) + (stash.colour.g * .59) + (stash.colour.b * .11));
+
                 //Original A = 255
-                Color col = new Color() { A = 100, B = Convert.ToByte(stash.colour.b), G = Convert.ToByte(stash.colour.g), R = Convert.ToByte(stash.colour.r) };
-                int grayScale = (int)((col.R * .3) + (col.G *
-                    .59) + (col.B * .11));
-
-               
-                Brush bru = new SolidColorBrush(col);
-
+                Brush bru = new SolidColorBrush(Color.FromArgb(100, Convert.ToByte(stash.colour.r), Convert.ToByte(stash.colour.g), Convert.ToByte(stash.colour.b)));
+                Brush boarderbru = new SolidColorBrush(Color.FromArgb(150, 150, 0, 0));
+                
                 listBoxI.Background = bru;
-                //listBoxI.BorderBrush = bru;
+                if (stash.hasFilteredItem) {
+                    listBoxI.BorderBrush = boarderbru;
+                }
+                
                 if (grayScale <= 100) {
                     //TODO set the right Textcolor
                 }

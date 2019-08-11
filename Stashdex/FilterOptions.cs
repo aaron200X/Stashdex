@@ -32,6 +32,7 @@ namespace Stashdex {
                 currentfilteredItems.Clear();
                 if (filter.filtername != "") {
                     foreach (Stash stash in Stashes.stashes) {
+                        stash.hasFilteredItem = false;
                         foreach (var item in stash.items) {
                             item.isFiltered = false;
                             foreach (string mods in item.allModsDic.Keys) {
@@ -45,8 +46,10 @@ namespace Stashdex {
                                             if (filterlist.IndexOf(filter) == 0) {
                                                 lastFilteredItems.Add(item);
                                                 currentfilteredItems.Add(item);
+                                                stash.hasFilteredItem = true;
                                             }  else if (lastFilteredItems.Contains(item)) {
                                                 currentfilteredItems.Add(item);
+                                                stash.hasFilteredItem = true;
                                             }
                                         }
                                     } else {
@@ -54,8 +57,10 @@ namespace Stashdex {
                                         if (filterlist.IndexOf(filter) == 0) {
                                             lastFilteredItems.Add(item);
                                             currentfilteredItems.Add(item);
+                                            stash.hasFilteredItem = true;
                                         } else if (lastFilteredItems.Contains(item)) {
                                             currentfilteredItems.Add(item);
+                                            stash.hasFilteredItem = true;
                                         }
                                     }
                                 }
@@ -70,6 +75,8 @@ namespace Stashdex {
                 Stashes.allFilteredItems.Add(item);
             }
 
+            //Highlight all Stashes and items
+            win.fillStashList();
             win.displayAllItems(Stashes.stashes[win.selectedStashNumber]);
         }
 
