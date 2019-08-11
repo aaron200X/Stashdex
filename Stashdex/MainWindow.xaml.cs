@@ -29,6 +29,8 @@ namespace Stashdex
         public MainWindow()
         {
             InitializeComponent();
+            itemPreviewCanvas.Visibility = Visibility.Hidden;
+
             jsonImport.import();
         }
         
