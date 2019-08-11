@@ -256,8 +256,20 @@ namespace Stashdex
         private void fillStashList() {
             foreach (var stash in Stashes.stashes) {
                 ListBoxItem listBoxI = new ListBoxItem();
-                listBoxI.Content = stash.tabNumber;
+                listBoxI.Content = stash.n;
 
+                Color col = new Color() { A = 255, B = Convert.ToByte(stash.colour.b), G = Convert.ToByte(stash.colour.g), R = Convert.ToByte(stash.colour.r) };
+                int grayScale = (int)((col.R * .3) + (col.G *
+                    .59) + (col.B * .11));
+
+               
+                Brush bru = new SolidColorBrush(col);
+
+                listBoxI.Background = bru;
+                //listBoxI.BorderBrush = bru;
+                if (grayScale <= 100) {
+                    
+                }
                 listBoxStashes.Items.Add(listBoxI);
             }
             
@@ -275,13 +287,14 @@ namespace Stashdex
         private void button_Click(object sender, RoutedEventArgs e) {
             Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password);
             displayAllItems();
+            Stashes.fillTheStashesAttributes();
             fillStashList();
         }
 
         private void localButton_Click(object sender, RoutedEventArgs e) {
-            fillStashList();
             Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password, true);
             displayAllItems();
+            Stashes.fillTheStashesAttributes();
             fillStashList();
         }
     }

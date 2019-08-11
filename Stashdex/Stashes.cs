@@ -113,9 +113,15 @@ namespace Stashdex {
                 return File.ReadAllText($"Stashes/S{tabIndex}.txt");
             } else {
                 return "";
-            }
+            }         
+        }
 
-            
+        public static void fillTheStashesAttributes() {
+            foreach (var stash in stashes) {
+                stash.n = stash.tabs[stashes.IndexOf(stash)].n;
+                stash.colour = stash.tabs[stashes.IndexOf(stash)].colour;
+                stash.i = stash.tabs[stashes.IndexOf(stash)].i;
+            }
         }
 
     }
