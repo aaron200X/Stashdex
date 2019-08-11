@@ -79,10 +79,10 @@ namespace Stashdex
             
         }
 
-        public void displayAllItems() {
+        public void displayAllItems(Stash stash) {
             deleteAllCanvas();
             int i = 0;
-            foreach (Item item in Stashes.stashes[0].items) {
+            foreach (Item item in stash.items) {
                 displayObject(item, i);
                 i++;
             }
@@ -258,7 +258,8 @@ namespace Stashdex
                 ListBoxItem listBoxI = new ListBoxItem();
                 listBoxI.Content = stash.n;
 
-                Color col = new Color() { A = 255, B = Convert.ToByte(stash.colour.b), G = Convert.ToByte(stash.colour.g), R = Convert.ToByte(stash.colour.r) };
+                //Original A = 255
+                Color col = new Color() { A = 100, B = Convert.ToByte(stash.colour.b), G = Convert.ToByte(stash.colour.g), R = Convert.ToByte(stash.colour.r) };
                 int grayScale = (int)((col.R * .3) + (col.G *
                     .59) + (col.B * .11));
 
@@ -268,7 +269,7 @@ namespace Stashdex
                 listBoxI.Background = bru;
                 //listBoxI.BorderBrush = bru;
                 if (grayScale <= 100) {
-                    
+                    //TODO set the right Textcolor
                 }
                 listBoxStashes.Items.Add(listBoxI);
             }
@@ -286,14 +287,14 @@ namespace Stashdex
 
         private void button_Click(object sender, RoutedEventArgs e) {
             Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password);
-            displayAllItems();
+            displayAllItems(Stashes.stashes[0]);
             Stashes.fillTheStashesAttributes();
             fillStashList();
         }
 
         private void localButton_Click(object sender, RoutedEventArgs e) {
             Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password, true);
-            displayAllItems();
+            displayAllItems(Stashes.stashes[0]);
             Stashes.fillTheStashesAttributes();
             fillStashList();
         }
