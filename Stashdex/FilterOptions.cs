@@ -70,7 +70,7 @@ namespace Stashdex {
                 Stashes.allFilteredItems.Add(item);
             }
 
-            win.displayAllItems(Stashes.stashes[0]);
+            win.displayAllItems(Stashes.stashes[win.selectedStashNumber]);
         }
 
 

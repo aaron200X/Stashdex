@@ -25,6 +25,7 @@ namespace Stashdex
     {
         List<object> hitResultsList = new List<object>();
         List<Canvas> canvasList = new List<Canvas>();
+        public int selectedStashNumber = 0;
 
         public MainWindow()
         {
@@ -132,7 +133,7 @@ namespace Stashdex
 
                     if (index >= 0)
                     {
-                        Item item = Stashes.stashes[0].items[index];
+                        Item item = Stashes.stashes[selectedStashNumber].items[index];
 
                         Thickness margin = itemPreviewCanvas.Margin;
                         margin.Left = Mouse.GetPosition(this).X + 10;
@@ -297,6 +298,12 @@ namespace Stashdex
             displayAllItems(Stashes.stashes[0]);
             Stashes.fillTheStashesAttributes();
             fillStashList();
+        }
+
+        private void listBoxStashes_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            selectedStashNumber = listBoxStashes.SelectedIndex;
+            displayAllItems(Stashes.stashes[selectedStashNumber]);
+            
         }
     }
 }
