@@ -138,7 +138,7 @@ namespace Stashdex {
                     //NUMBERS
                     //Replace the numbers with the #
                     value1 = help.getNumber1Regex.Match(mod).Value;
-                    
+
                     if (help.getNumber1Regex.IsMatch(value2.ToString())) {
                         key = key.Replace(value2.ToString(), "#");
                         value1 = help.getNumber1Regex.Match(mod).Value; ;
@@ -155,7 +155,7 @@ namespace Stashdex {
                     } catch (Exception) {
                         valueTogether = Convert.ToDouble(value1);
                     }
-                    
+
                 }
 
                 if (allModsDic.ContainsKey(key)) {
@@ -197,7 +197,17 @@ namespace Stashdex {
         public bool selected { get; set; }
         public List<Item> items { get; set; }
         public bool quadLayout { get; set; }
+        public string n { get; set; }
+        public string type { get; set; }
+        public int i { get; set; }
+        public Colour colour { get; set; }
 
+    }
+
+    public class Colour {
+        public int r { get; set; }
+        public int g { get; set; }
+        public int b { get; set; }
     }
 
 

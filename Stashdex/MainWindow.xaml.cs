@@ -253,6 +253,16 @@ namespace Stashdex
             return image;
         }
 
+        private void fillStashList() {
+            foreach (var stash in Stashes.stashes) {
+                ListBoxItem listBoxI = new ListBoxItem();
+                listBoxI.Content = stash.tabNumber;
+
+                listBoxStashes.Items.Add(listBoxI);
+            }
+            
+        }
+
         private void filterOptionsButton_Click(object sender, RoutedEventArgs e)
         {
             //TODO preventing multiple Windows 
@@ -265,11 +275,14 @@ namespace Stashdex
         private void button_Click(object sender, RoutedEventArgs e) {
             Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password);
             displayAllItems();
+            fillStashList();
         }
 
         private void localButton_Click(object sender, RoutedEventArgs e) {
+            fillStashList();
             Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password, true);
             displayAllItems();
+            fillStashList();
         }
     }
 }
