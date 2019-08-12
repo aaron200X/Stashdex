@@ -313,7 +313,11 @@ namespace Stashdex
         }
 
         private void listBoxStashes_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            selectedStashNumber = listBoxStashes.SelectedIndex;
+            //Fix the selectedIndex
+            if (listBoxStashes.SelectedIndex != -1) {
+                selectedStashNumber = listBoxStashes.SelectedIndex;
+            }
+            
             displayAllItems(Stashes.stashes[selectedStashNumber]);
             
         }
