@@ -26,10 +26,14 @@ namespace Stashdex
         List<object> hitResultsList = new List<object>();
         List<Canvas> canvasList = new List<Canvas>();
         public int selectedStashNumber = 0;
+        public Grid usedGrid;
+        public Image usedBackground;
 
         public MainWindow()
         {
             InitializeComponent();
+            usedGrid = quadGrid;
+            usedBackground = stashBackground;
             itemPreviewCanvas.Visibility = Visibility.Hidden;
 
             jsonImport.import();
@@ -54,16 +58,16 @@ namespace Stashdex
             itemImage.Name = "itemImg_" + counter;
 
 
-            Grid.SetColumn(c, item.x);
+            Grid.SetColumn(c, item.x );
             Grid.SetColumnSpan(c, item.w);
             Grid.SetRow(c, item.y);
-            Grid.SetRowSpan(c, item.h);         
+            Grid.SetRowSpan(c, item.h);
 
-            g.Children.Add(c);
+            usedGrid.Children.Add(c);
             c.Children.Add(itemImage);
 
-            g.MouseMove += new MouseEventHandler(myPanel_MouseMove);
-            g.MouseLeave += new MouseEventHandler(myPanel_MouseLeave);
+            usedGrid.MouseMove += new MouseEventHandler(myPanel_MouseMove);
+            usedGrid.MouseLeave += new MouseEventHandler(myPanel_MouseLeave);
 
             canvasList.Add(c);
         }
@@ -74,7 +78,7 @@ namespace Stashdex
         /// <param name="counter"></param>
         public void deleteAllCanvas(){
             foreach(Canvas c in canvasList) {
-                g.Children.Remove(c);
+                usedGrid.Children.Remove(c);
             }
             canvasList.Clear();
             
@@ -107,7 +111,7 @@ namespace Stashdex
             hitResultsList.Clear();
 
             // Set up a callback to receive the hit test result enumeration.
-            VisualTreeHelper.HitTest(g, null,
+            VisualTreeHelper.HitTest(usedGrid, null,
                 new HitTestResultCallback(MyHitTestResult),
                 new PointHitTestParameters(pt));
 
@@ -251,8 +255,10 @@ namespace Stashdex
             bi.UriSource = new Uri(src, UriKind.Absolute);
             bi.EndInit();
             image.Source = bi;
+            //image.RenderSize = 1;
             return image;
         }
+
 
         public void fillStashList() {
             listBoxStashes.Items.Clear();
