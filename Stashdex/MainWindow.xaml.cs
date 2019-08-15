@@ -54,11 +54,12 @@ namespace Stashdex
             c.Background = b;
             c.Name = "itemCanvas_" + counter;
 
+            //TODO Donwload image and use a small variant for quadtabs
             Image itemImage = setImage(item.icon);
             itemImage.Name = "itemImg_" + counter;
 
 
-            Grid.SetColumn(c, item.x );
+            Grid.SetColumn(c, item.x);
             Grid.SetColumnSpan(c, item.w);
             Grid.SetRow(c, item.y);
             Grid.SetRowSpan(c, item.h);
@@ -255,6 +256,7 @@ namespace Stashdex
             bi.UriSource = new Uri(src, UriKind.Absolute);
             bi.EndInit();
             image.Source = bi;
+            image.RenderSize = new Size(5, 5); //SIZE
             //image.RenderSize = 1;
             return image;
         }

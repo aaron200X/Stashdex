@@ -49,7 +49,9 @@ namespace Stashdex {
                 }
                 
                 jsonImport.import(response);
-                saveStashesLocal(tabIndex, response);
+                if (!getLocalStash) { 
+                    saveStashesLocal(tabIndex, response);
+                }
                 tabIndex++;
                 //Getting all Tabs
                 //DEBUG

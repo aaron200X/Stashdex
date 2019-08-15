@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -71,6 +72,7 @@
       <DependentUpon>FilterOptionsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HelpFunctions.cs" />
+    <Compile Include="Imager.cs" />
     <Compile Include="itemPreview.cs" />
     <Compile Include="jsonImport.cs" />
     <Compile Include="Stash.cs" />
