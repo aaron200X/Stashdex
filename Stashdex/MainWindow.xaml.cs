@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Stashdex
 {
@@ -28,11 +31,13 @@ namespace Stashdex
         public int selectedStashNumber = 0;
         public Grid usedGrid;
         public Image usedBackground;
+        public Regex nameReg = new Regex(@"\/([\w| |-]*.png)");
 
         public MainWindow()
         {
             InitializeComponent();
-            usedGrid = quadGrid;
+            //usedGrid = quadGrid;
+            usedGrid = normalGrid;
             usedBackground = stashBackground;
             itemPreviewCanvas.Visibility = Visibility.Hidden;
 
@@ -66,6 +71,8 @@ namespace Stashdex
 
             usedGrid.Children.Add(c);
             c.Children.Add(itemImage);
+
+
 
             usedGrid.MouseMove += new MouseEventHandler(myPanel_MouseMove);
             usedGrid.MouseLeave += new MouseEventHandler(myPanel_MouseLeave);
@@ -248,14 +255,38 @@ namespace Stashdex
             return HitTestResultBehavior.Continue;
         }
 
+        public string downloadImage(string source, string itemName) {
+            try {
+                WebClient webClient = new WebClient();
+                if (!Directory.Exists("..\\..\\pics\\items")) {
+                    Directory.CreateDirectory(@"..\..\pics\items");
+                }
+                if (!File.Exists($@"..\\..\\pics\\items\{itemName}")) {
+                    webClient.DownloadFile(source, $@"..\..\pics\items\{itemName}");
+                }
+            } catch (Exception ex) {
+                Debug.Write(ex.Message);
+            }
+            string path = System.IO.Path.GetFullPath($@"..\..\pics\items\{itemName}");
+            return path;
+
+
+        }
+
         public Image setImage(string src)
         {
             Image image = new Image();
             BitmapImage bi = new BitmapImage();
+            string itemName = nameReg.Match(src).Groups[1].Value;
+            string fullPath = downloadImage(src, itemName);
             bi.BeginInit();
-            bi.UriSource = new Uri(src, UriKind.Absolute);
+            //bi.UriSource = new Uri(src, UriKind.Absolute);
+            bi.UriSource = new Uri(fullPath, UriKind.Absolute);
+            //bi.UriSource = new Uri($@"D:\Programme\visual_Studio Projekte\Stashdex\Stashdex\pics\items\{itemName}", UriKind.RelativeOrAbsolute);
             bi.EndInit();
             image.Source = bi;
+            //Imager.ResizeImage(bi, (Convert.ToInt32(image.Width / 2)), Convert.ToInt32(image.Height / 2));
+
             image.RenderSize = new Size(5, 5); //SIZE
             //image.RenderSize = 1;
             return image;
