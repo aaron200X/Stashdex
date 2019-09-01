@@ -31,14 +31,23 @@ namespace Stashdex
         public int selectedStashNumber = 0;
         public Grid usedGrid;
         public Image usedBackground;
-        public Regex nameReg = new Regex(@"\/([\w| |-]*.png)");
+        public Regex nameReg = new Regex(@"\/([\w| |-]*).png");
+        public bool isQuadtab = true; //TODO - get quadtab info
 
         public MainWindow()
         {
             InitializeComponent();
-            //usedGrid = quadGrid;
-            usedGrid = normalGrid;
-            usedBackground = stashBackground;
+            
+            //usedGrid = normalGrid;
+            if (isQuadtab) {
+                usedGrid = quadGrid;
+                usedBackground = stashQuadBackground;
+            } else {
+                usedGrid = normalGrid;
+                usedBackground = stashBackground;
+            }
+            
+            
             itemPreviewCanvas.Visibility = Visibility.Hidden;
 
             jsonImport.import();
@@ -60,9 +69,8 @@ namespace Stashdex
             c.Name = "itemCanvas_" + counter;
 
             //TODO Donwload image and use a small variant for quadtabs
-            Image itemImage = setImage(item.icon);
+            Image itemImage = setImage(item, isQuadtab);
             itemImage.Name = "itemImg_" + counter;
-
 
             Grid.SetColumn(c, item.x);
             Grid.SetColumnSpan(c, item.w);
@@ -126,8 +134,6 @@ namespace Stashdex
             // Perform actions on the hit test results list.
             if (hitResultsList.Count > 0)
             {
-               
-
                 for (int i = 0; i <= hitResultsList.Count(); i++)
                 {
                     int index = -1;
@@ -255,40 +261,72 @@ namespace Stashdex
             return HitTestResultBehavior.Continue;
         }
 
-        public string downloadImage(string source, string itemName) {
+        public string downloadImage(Item item, string itemName, bool isQuadtab) {
             try {
                 WebClient webClient = new WebClient();
                 if (!Directory.Exists("..\\..\\pics\\items")) {
                     Directory.CreateDirectory(@"..\..\pics\items");
                 }
                 if (!File.Exists($@"..\\..\\pics\\items\{itemName}")) {
-                    webClient.DownloadFile(source, $@"..\..\pics\items\{itemName}");
+                    webClient.DownloadFile(item.icon, $@"..\..\pics\items\{itemName}.png");
                 }
+
             } catch (Exception ex) {
                 Debug.Write(ex.Message);
             }
-            string path = System.IO.Path.GetFullPath($@"..\..\pics\items\{itemName}");
-            return path;
+            string onlyThePath = System.IO.Path.GetFullPath($@"..\..\pics\items\");
+            string fullPath = System.IO.Path.GetFullPath($@"..\..\pics\items\{itemName}.png");
+            string smallFilePath = Resizer(fullPath, itemName, onlyThePath, item);
+            if (isQuadtab) {
+                return smallFilePath;
+
+            } else {
+                return fullPath;
+
+            }
 
 
         }
 
-        public Image setImage(string src)
+        public string Resizer(string fullPath, string itemName, string onlyThePath, Item item) {
+            string newFilename = $"{itemName}_small.png";
+            if (!File.Exists($@"{onlyThePath}\{newFilename}"))
+            using (System.Drawing.Image original = System.Drawing.Image.FromFile(fullPath)) {
+                int newHeight = Convert.ToInt16(item.h * 34);
+                int newWidth = Convert.ToInt16(item.w * 34);
+
+                    if (original.Height % 2 != 0){
+                        newHeight += 1;
+                    }
+                    if (original.Width % 2 != 0) {
+                        newWidth += 1;
+                    }
+
+                    using (System.Drawing.Bitmap newPic = new System.Drawing.Bitmap(newWidth, newHeight)) {
+                    using (System.Drawing.Graphics gr = System.Drawing.Graphics.FromImage(newPic)) {
+                        gr.DrawImage(original, 0, 0, (newWidth), (newHeight));
+                         /* Put new file path here */
+                        //TODO richtiger Name + richtiger Ordner
+                        newPic.Save($@"{onlyThePath}\{newFilename}", System.Drawing.Imaging.ImageFormat.Png);
+                    }
+                }
+            }
+            return $@"{onlyThePath}\{newFilename}";
+        }
+
+
+        public Image setImage(Item item, bool isQuadtab)
         {
             Image image = new Image();
             BitmapImage bi = new BitmapImage();
-            string itemName = nameReg.Match(src).Groups[1].Value;
-            string fullPath = downloadImage(src, itemName);
+            string itemName = nameReg.Match(item.icon).Groups[1].Value;
+            string fullPath = downloadImage(item, itemName, isQuadtab);
             bi.BeginInit();
             //bi.UriSource = new Uri(src, UriKind.Absolute);
             bi.UriSource = new Uri(fullPath, UriKind.Absolute);
             //bi.UriSource = new Uri($@"D:\Programme\visual_Studio Projekte\Stashdex\Stashdex\pics\items\{itemName}", UriKind.RelativeOrAbsolute);
             bi.EndInit();
             image.Source = bi;
-            //Imager.ResizeImage(bi, (Convert.ToInt32(image.Width / 2)), Convert.ToInt32(image.Height / 2));
-
-            image.RenderSize = new Size(5, 5); //SIZE
-            //image.RenderSize = 1;
             return image;
         }
 
