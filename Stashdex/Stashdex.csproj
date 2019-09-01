@@ -30,13 +30,15 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>..\..\..\..\POEprogramme\Stashdex\Bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Stashdex.App</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -127,26 +129,62 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="pics\sockets\abyssal-socketed.png" />
-    <Resource Include="pics\sockets\abyssal.png" />
-    <Resource Include="pics\sockets\blue-socketed-white.png" />
-    <Resource Include="pics\sockets\blue-socketed.png" />
-    <Resource Include="pics\sockets\blue.png" />
-    <Resource Include="pics\sockets\green-socketed-white.png" />
-    <Resource Include="pics\sockets\green-socketed.png" />
-    <Resource Include="pics\sockets\green.png" />
-    <Resource Include="pics\sockets\link-horizontal.png" />
-    <Resource Include="pics\sockets\link-vertical.png" />
-    <Resource Include="pics\sockets\red-socketed-white.png" />
-    <Resource Include="pics\sockets\red-socketed.png" />
-    <Resource Include="pics\sockets\red.png" />
-    <Resource Include="pics\sockets\white-socketed-white.png" />
-    <Resource Include="pics\sockets\white-socketed.png" />
-    <Resource Include="pics\sockets\white.png" />
+    <Content Include="pics\sockets\abyssal-socketed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\abyssal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\blue-socketed-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\blue-socketed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\green-socketed-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\green-socketed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\link-horizontal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\link-vertical.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\red-socketed-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\red-socketed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\red.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\white-socketed-white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\white-socketed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\sockets\white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="pics\QuadStashPanelGrid.png" />
-    <Resource Include="pics\StashPanelGrid.png" />
+    <Content Include="pics\QuadStashPanelGrid.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pics\StashPanelGrid.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

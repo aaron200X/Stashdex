@@ -34,13 +34,25 @@ namespace Stashdex
         public bool isQuadtab = true; //TODO - get quadtab info
 
         public MainWindow() {
-            InitializeComponent();
+            try {
 
-            //setStashSize(isQuadtab);
+                InitializeComponent();
 
-            itemPreviewCanvas.Visibility = Visibility.Hidden;
+                //setStashSize(isQuadtab);
 
-            jsonImport.import();
+                itemPreviewCanvas.Visibility = Visibility.Hidden;
+
+                //jsonImport.import();
+            } catch (Exception ex) {
+                if (!File.Exists("Log.txt")) {
+                    File.Create("Log.txt");
+                }
+                using (StreamWriter sw = File.CreateText($"Log.txt")) {
+                    sw.WriteLine(ex.Message);
+                }
+                throw;
+            }
+
         }
 
         public void displayObject(Item item, int counter) {
@@ -268,17 +280,17 @@ namespace Stashdex
             try {
                 WebClient webClient = new WebClient();
                 if (!Directory.Exists("..\\..\\pics\\items")) {
-                    Directory.CreateDirectory(@"..\..\pics\items");
+                    Directory.CreateDirectory(@"pics\items");
                 }
                 if (!File.Exists($@"..\\..\\pics\\items\{itemName}.png")) {
-                    webClient.DownloadFile(item.icon, $@"..\..\pics\items\{itemName}.png");
+                    webClient.DownloadFile(item.icon, $@"pics\items\{itemName}.png");
                 }
 
             } catch (Exception ex) {
                 Debug.Write(ex.Message);
             }
-            string onlyThePath = System.IO.Path.GetFullPath($@"..\..\pics\items\");
-            string fullPath = System.IO.Path.GetFullPath($@"..\..\pics\items\{itemName}.png");
+            string onlyThePath = System.IO.Path.GetFullPath($@"pics\items\");
+            string fullPath = System.IO.Path.GetFullPath($@"pics\items\{itemName}.png");
             string smallFilePath = Resizer(fullPath, itemName, onlyThePath, item);
             if (isQuadtab) {
                 return smallFilePath;
