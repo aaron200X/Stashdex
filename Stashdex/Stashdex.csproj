@@ -77,6 +77,7 @@
     <Compile Include="Imager.cs" />
     <Compile Include="itemPreview.cs" />
     <Compile Include="jsonImport.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Stash.cs" />
     <Compile Include="Stashes.cs" />
     <Page Include="FilterOptionsWindow.xaml">

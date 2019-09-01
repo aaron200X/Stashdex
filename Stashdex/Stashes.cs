@@ -42,16 +42,23 @@ namespace Stashdex {
             coocCont.Add(cook);
             //First try to get the number of Tabs
             using (BetterWebClient webClient = new BetterWebClient(coocCont)) {
-                if (!getLocalStash) {
-                    response = webClient.DownloadString(adress);
-                } else {
-                    response = loadStashLocal(tabIndex);
+                try {
+                    if (!getLocalStash) {
+                        response = webClient.DownloadString(adress);
+                    } else {
+                        response = loadStashLocal(tabIndex);
+                    }
+
+                    jsonImport.import(response);
+                    if (!getLocalStash) {
+                        saveStashesLocal(tabIndex, response);
+                    }
+                } catch (Exception ex) {
+                    Log.log(ex);
+                    throw;
                 }
-                
-                jsonImport.import(response);
-                if (!getLocalStash) { 
-                    saveStashesLocal(tabIndex, response);
-                }
+
+              
                 tabIndex++;
                 //Getting all Tabs
                 //DEBUG
@@ -65,7 +72,7 @@ namespace Stashdex {
 
                             } catch (Exception ex) {
                             Console.Write(ex.Message);
-                            System.Threading.Thread.Sleep(10000);
+                            System.Threading.Thread.Sleep(100000);
                             response = webClient.DownloadString(adress);
                         }
                     } else {
@@ -80,6 +87,7 @@ namespace Stashdex {
                 }
 
             }
+
             win.statusLabel.Content = "";
         }
 

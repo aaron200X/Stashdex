@@ -44,12 +44,8 @@ namespace Stashdex
 
                 //jsonImport.import();
             } catch (Exception ex) {
-                if (!File.Exists("Log.txt")) {
-                    File.Create("Log.txt");
-                }
-                using (StreamWriter sw = File.CreateText($"Log.txt")) {
-                    sw.WriteLine(ex.Message);
-                }
+                //TODO - als eigene Funktion mit stacktrace
+                Log.log(ex);
                 throw;
             }
 
@@ -279,10 +275,10 @@ namespace Stashdex
         public string downloadImage(Item item, string itemName, bool isQuadtab) {
             try {
                 WebClient webClient = new WebClient();
-                if (!Directory.Exists("..\\..\\pics\\items")) {
+                if (!Directory.Exists("pics\\items")) {
                     Directory.CreateDirectory(@"pics\items");
                 }
-                if (!File.Exists($@"..\\..\\pics\\items\{itemName}.png")) {
+                if (!File.Exists($@"pics\\items\{itemName}.png")) {
                     webClient.DownloadFile(item.icon, $@"pics\items\{itemName}.png");
                 }
 
