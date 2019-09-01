@@ -24,8 +24,7 @@ namespace Stashdex
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : Window {
         List<object> hitResultsList = new List<object>();
         List<Canvas> canvasList = new List<Canvas>();
         public int selectedStashNumber = 0;
@@ -34,27 +33,17 @@ namespace Stashdex
         public Regex nameReg = new Regex(@"\/([\w| |-]*).png");
         public bool isQuadtab = true; //TODO - get quadtab info
 
-        public MainWindow()
-        {
+        public MainWindow() {
             InitializeComponent();
-            
-            //usedGrid = normalGrid;
-            if (isQuadtab) {
-                usedGrid = quadGrid;
-                usedBackground = stashQuadBackground;
-            } else {
-                usedGrid = normalGrid;
-                usedBackground = stashBackground;
-            }
-            
-            
+
+            //setStashSize(isQuadtab);
+
             itemPreviewCanvas.Visibility = Visibility.Hidden;
 
             jsonImport.import();
         }
-        
-        public void displayObject(Item item, int counter)
-        {
+
+        public void displayObject(Item item, int counter) {
             Canvas c = new Canvas();
             //Filtered items will shown yellow
             Brush b = new SolidColorBrush(Color.FromArgb(150, 20, 20, 100));
@@ -80,12 +69,24 @@ namespace Stashdex
             usedGrid.Children.Add(c);
             c.Children.Add(itemImage);
 
-
-
             usedGrid.MouseMove += new MouseEventHandler(myPanel_MouseMove);
             usedGrid.MouseLeave += new MouseEventHandler(myPanel_MouseLeave);
 
             canvasList.Add(c);
+        }
+    
+
+        void setStashSize(bool isQuadtab) {
+            if (isQuadtab) {
+                usedGrid = quadGrid;
+                usedBackground = stashQuadBackground;
+            } else {
+                usedGrid = normalGrid;
+                usedBackground = stashBackground;
+            }
+            stashQuadBackground.Opacity = 0;
+            stashBackground.Opacity = 0;
+            usedBackground.Opacity = 100;
         }
 
         /// <summary>
@@ -103,6 +104,8 @@ namespace Stashdex
         public void displayAllItems(Stash stash) {
             deleteAllCanvas();
             int i = 0;
+            isQuadtab = stash.quadLayout;
+            setStashSize(isQuadtab);
             foreach (Item item in stash.items) {
                 displayObject(item, i);
                 i++;
@@ -267,7 +270,7 @@ namespace Stashdex
                 if (!Directory.Exists("..\\..\\pics\\items")) {
                     Directory.CreateDirectory(@"..\..\pics\items");
                 }
-                if (!File.Exists($@"..\\..\\pics\\items\{itemName}")) {
+                if (!File.Exists($@"..\\..\\pics\\items\{itemName}.png")) {
                     webClient.DownloadFile(item.icon, $@"..\..\pics\items\{itemName}.png");
                 }
 
