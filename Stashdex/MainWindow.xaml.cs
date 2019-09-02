@@ -76,7 +76,10 @@ namespace Stashdex
 
             usedGrid.Children.Add(c);
             c.Children.Add(itemImage);
-
+            if (isQuadtab) { 
+                itemImage.Width = item.w * 24;
+                itemImage.Height = item.h * 24;
+            }
             usedGrid.MouseMove += new MouseEventHandler(myPanel_MouseMove);
             usedGrid.MouseLeave += new MouseEventHandler(myPanel_MouseLeave);
 
@@ -287,20 +290,15 @@ namespace Stashdex
             }
             string onlyThePath = System.IO.Path.GetFullPath($@"pics\items\");
             string fullPath = System.IO.Path.GetFullPath($@"pics\items\{itemName}.png");
-            string smallFilePath = Resizer(fullPath, itemName, onlyThePath, item);
-            if (isQuadtab) {
-                return smallFilePath;
-
-            } else {
+            //string smallFilePath = Resizer(fullPath, itemName, onlyThePath, item);
+            
                 return fullPath;
-
-            }
 
 
         }
 
         public string Resizer(string fullPath, string itemName, string onlyThePath, Item item) {
-            string newFilename = $"{itemName}_small.png";
+            string newFilename = $"{itemName}.png";
             if (!File.Exists($@"{onlyThePath}\{newFilename}"))
             using (System.Drawing.Image original = System.Drawing.Image.FromFile(fullPath)) {
                 int newHeight = Convert.ToInt16(item.h * 34);
