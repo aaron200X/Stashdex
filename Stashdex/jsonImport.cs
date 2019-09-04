@@ -14,10 +14,7 @@ namespace Stashdex
 
         public static void import()
         {
-            //importTxt.Text = File.ReadAllText("../../TextFile1.txt");
             //TODO beim durchgehen der Stashes, die Nummer mitzählen und die ID eintragen
-           // Stash stash = JsonConvert.DeserializeObject<Stash>(File.ReadAllText("../../TextFile1.txt"));
-            //Stash stash = JsonConvert.DeserializeObject<Stash>(File.ReadAllText("../../txt20190803.txt"));
             Stash stash = new Stash();
             //KOmme nicht an die Items bei der Erstellung ran. laufe also anschließend durch
             //TODO Nach Stashes umsiedeln
