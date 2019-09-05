@@ -41,6 +41,10 @@ namespace Stashdex
                 //setStashSize(isQuadtab);
 
                 itemPreviewCanvas.Visibility = Visibility.Hidden;
+                if (File.Exists("options.txt")) {
+                    string bla = File.ReadAllText("options.txt");
+                    poeidPwBox.Password = bla;
+                }
 
                 //jsonImport.import();
             } catch (Exception ex) {
