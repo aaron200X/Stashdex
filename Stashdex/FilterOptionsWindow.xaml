@@ -49,59 +49,63 @@
             <Label Content="Damage" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="260,96,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="300,96,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,93,0,0" VerticalAlignment="Top"/>
+            <Label Content="APS" HorizontalAlignment="Left" Margin="201,93,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="69,119,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="109,119,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top"/>
+            <Label Content="Crit. Strike" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="260,119,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="300,119,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,116,0,0" VerticalAlignment="Top"/>
+            <Label Content="DPS" HorizontalAlignment="Left" Margin="201,116,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="69,142,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="109,142,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
+            <Label Content="eDPS" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="260,142,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="300,142,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,139,0,0" VerticalAlignment="Top"/>
+            <Label Content="pDPS" HorizontalAlignment="Left" Margin="201,139,0,0" VerticalAlignment="Top"/>
             <Label Content="OFFENSE" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="69,187,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="109,187,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top"/>
+            <Label Content="Armour" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="260,187,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="300,187,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,184,0,0" VerticalAlignment="Top"/>
+            <Label Content="Shield" HorizontalAlignment="Left" Margin="201,184,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="69,210,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="109,210,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,207,0,0" VerticalAlignment="Top"/>
+            <Label Content="Evasion" HorizontalAlignment="Left" Margin="10,207,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="260,210,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="300,210,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,207,0,0" VerticalAlignment="Top"/>
-            <Label Content="OFFENSE" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label Content="Block" HorizontalAlignment="Left" Margin="201,207,0,0" VerticalAlignment="Top"/>
+            <Label Content="DEFENSE" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="69,255,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="109,255,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top"/>
+            <Label Content="Sockets" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="260,255,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="300,255,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,252,0,0" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,278,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,278,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,278,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,278,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,275,0,0" VerticalAlignment="Top"/>
-            <Label Content="OFFENSE" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label Content="Links" HorizontalAlignment="Left" Margin="201,252,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,278,0,0" TextWrapping="Wrap" Text="R" VerticalAlignment="Top" Width="21" BorderBrush="Red"/>
+            <Label Content="Colors" HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top"/>
+            <Label Content="Linked" HorizontalAlignment="Left" Margin="201,275,0,0" VerticalAlignment="Top"/>
+            <Label Content="SOCKETS" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="69,323,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="109,323,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top"/>
+            <Label Content="Level" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="260,323,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="300,323,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,320,0,0" VerticalAlignment="Top"/>
+            <Label Content="Strength" HorizontalAlignment="Left" Margin="201,320,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="69,346,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="109,346,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top"/>
+            <Label Content="Dexterity" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="260,346,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="300,346,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
-            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,343,0,0" VerticalAlignment="Top"/>
-            <Label Content="OFFENSE" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label Content="Int." HorizontalAlignment="Left" Margin="201,343,0,0" VerticalAlignment="Top"/>
+            <Label Content="REQUIREMENTS" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="88,278,0,0" TextWrapping="Wrap" Text="G" VerticalAlignment="Top" Width="21" BorderBrush="#FFFFC900"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,278,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="21" BorderBrush="#FF0040FF"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="128,278,0,0" TextWrapping="Wrap" Text="W" VerticalAlignment="Top" Width="21"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,278,0,0" TextWrapping="Wrap" Text="R" VerticalAlignment="Top" Width="21" BorderBrush="Red"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="279,278,0,0" TextWrapping="Wrap" Text="G" VerticalAlignment="Top" Width="21" BorderBrush="#FFFFC900"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,278,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="21" BorderBrush="#FF0040FF"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="319,278,0,0" TextWrapping="Wrap" Text="W" VerticalAlignment="Top" Width="21"/>
         </Grid>
     </Grid>
 </Window>
