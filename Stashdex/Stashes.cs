@@ -18,7 +18,7 @@ namespace Stashdex {
         /// Creates a List with all mods, that exists in your stash
         /// </summary>
         public static void getAbsolutelyAllMods(string[] notSupportedTypes = null) {
-            
+            List<string> categoryList = new List<string>();
             foreach (Stash stash in stashes) {
                 foreach (var item in stash.items) {
                     bool badItemBool = false;
@@ -30,6 +30,9 @@ namespace Stashdex {
                         }
                     }
                     if (!badItemBool) {
+                        if (!categoryList.Contains(item.category.ToString())) {
+                           categoryList.Add(item.category.ToString());
+                        }
                         foreach (string mods in item.allModsDic.Keys) {
                             if (!absolutelyAllMods.Contains(mods)) {
                                 absolutelyAllMods.Add(mods);
