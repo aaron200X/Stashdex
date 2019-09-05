@@ -100,7 +100,7 @@ namespace Stashdex
         /// </summary>
         /// <param name="filterWindow"></param>
         public static void fillFilterBox(FilterOptionsWindow filterWindow) {
-            Stashes.getAbsolutelyAllMods();
+            Stashes.getAbsolutelyAllMods(new string[]{"currency", "gem"});
             filterWindow.filterBox.Items.Clear();
 
             foreach (string mod in Stashes.absolutelyAllMods) {
