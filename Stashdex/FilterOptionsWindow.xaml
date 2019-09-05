@@ -6,37 +6,102 @@
         xmlns:local="clr-namespace:Stashdex"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Stashdex.FilterOptionsWindow"
         mc:Ignorable="d"
-        Title="FilterOptionsWindow" Height="600" Width="800">
-    <Grid>
-        <Button x:Name="button" Content="Filter" HorizontalAlignment="Left" Margin="708,541,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <ListBox x:Name="filterBox" HorizontalAlignment="Left" Height="354" Margin="10,38,0,0" VerticalAlignment="Top" Width="693" RenderTransformOrigin="0.531,0.536" SelectionChanged="listBox_SelectionChanged"/>
-        <Button x:Name="buttonAdd" Content="Add" HorizontalAlignment="Left" Margin="708,10,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdd_Click"/>
-        <TextBox x:Name="filterModTxtBox_1" HorizontalAlignment="Left" Height="23" Margin="10,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495"/>
-        <TextBox x:Name="numberMinTxtBox_1" HorizontalAlignment="Left" Height="23" Margin="510,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
-        <TextBox x:Name="numberMaxTxtBox_1" HorizontalAlignment="Left" Height="23" Margin="583,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
-        <Button x:Name="deleteButton" Content="X" HorizontalAlignment="Left" Margin="656,397,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
-        <TextBox x:Name="filterModTxtBox_2" HorizontalAlignment="Left" Height="23" Margin="10,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495"/>
-        <TextBox x:Name="numberMinTxtBox_2" HorizontalAlignment="Left" Height="23" Margin="510,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
-        <TextBox x:Name="numberMaxTxtBox_2" HorizontalAlignment="Left" Height="23" Margin="583,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
-        <Button x:Name="deleteButton_2" Content="X" HorizontalAlignment="Left" Margin="656,422,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
-        <TextBox x:Name="filterModTxtBox_3" HorizontalAlignment="Left" Height="23" Margin="10,445,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495"/>
-        <TextBox x:Name="numberMinTxtBox_3" HorizontalAlignment="Left" Height="23" Margin="510,445,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
-        <TextBox x:Name="numberMaxTxtBox_3" HorizontalAlignment="Left" Height="23" Margin="583,445,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
-        <Button x:Name="deleteButton_3" Content="X" HorizontalAlignment="Left" Margin="656,447,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
-        <TextBox x:Name="filterModTxtBox_4" HorizontalAlignment="Left" Height="23" Margin="10,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495"/>
-        <TextBox x:Name="numberMinTxtBox_4" HorizontalAlignment="Left" Height="23" Margin="510,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
-        <TextBox x:Name="numberMaxTxtBox_4" HorizontalAlignment="Left" Height="23" Margin="583,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
-        <Button x:Name="deleteButton_4" Content="X" HorizontalAlignment="Left" Margin="656,472,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
-        <TextBox x:Name="filterModTxtBox_5" HorizontalAlignment="Left" Height="23" Margin="10,495,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495"/>
-        <TextBox x:Name="numberMinTxtBox_5" HorizontalAlignment="Left" Height="23" Margin="510,495,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
-        <TextBox x:Name="numberMaxTxtBox_5" HorizontalAlignment="Left" Height="23" Margin="583,495,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
-        <Button x:Name="deleteButton_5" Content="X" HorizontalAlignment="Left" Margin="656,497,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
-        <TextBox x:Name="filterModTxtBox_6" HorizontalAlignment="Left" Height="23" Margin="10,520,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495"/>
-        <TextBox x:Name="numberMinTxtBox_6" HorizontalAlignment="Left" Height="23" Margin="510,520,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
-        <TextBox x:Name="numberMaxTxtBox_6" HorizontalAlignment="Left" Height="23" Margin="583,520,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
-        <Button x:Name="deleteButton_1" Content="X" HorizontalAlignment="Left" Margin="656,523,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
-        <TextBox x:Name="searchFilterTxtBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="693" TextChanged="searchFilterTxtBox_TextChanged"/>
-        <Label x:Name="foundCounterLbl" Content="0" HorizontalAlignment="Left" Margin="708,67,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="foundCounterLbl_Copy" Content="Items found:" HorizontalAlignment="Left" Margin="708,35,0,0" VerticalAlignment="Top" Width="75"/>
+        Title="FilterOptionsWindow" Height="600" Width="1133.295">
+    <Grid HorizontalAlignment="Left" Margin="370,0,-6,-0.333" Width="710">
+        <Button x:Name="button" Content="Filter" HorizontalAlignment="Left" Margin="617,527,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <ListBox x:Name="filterBox" HorizontalAlignment="Left" Height="354" Margin="12,41,0,0" VerticalAlignment="Top" Width="600" RenderTransformOrigin="0.531,0.536" SelectionChanged="listBox_SelectionChanged"/>
+        <Button x:Name="buttonAdd" Content="Add" HorizontalAlignment="Left" Margin="617,16,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdd_Click"/>
+        <TextBox x:Name="filterModTxtBox_1" HorizontalAlignment="Left" Height="23" Margin="12,398,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402"/>
+        <TextBox x:Name="numberMinTxtBox_1" HorizontalAlignment="Left" Height="23" Margin="419,398,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
+        <TextBox x:Name="numberMaxTxtBox_1" HorizontalAlignment="Left" Height="23" Margin="492,398,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
+        <Button x:Name="deleteButton" Content="X" HorizontalAlignment="Left" Margin="565,400,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
+        <TextBox x:Name="filterModTxtBox_2" HorizontalAlignment="Left" Height="23" Margin="12,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402"/>
+        <TextBox x:Name="numberMinTxtBox_2" HorizontalAlignment="Left" Height="23" Margin="419,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
+        <TextBox x:Name="numberMaxTxtBox_2" HorizontalAlignment="Left" Height="23" Margin="492,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
+        <Button x:Name="deleteButton_2" Content="X" HorizontalAlignment="Left" Margin="565,425,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
+        <TextBox x:Name="filterModTxtBox_3" HorizontalAlignment="Left" Height="23" Margin="12,448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402"/>
+        <TextBox x:Name="numberMinTxtBox_3" HorizontalAlignment="Left" Height="23" Margin="419,448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
+        <TextBox x:Name="numberMaxTxtBox_3" HorizontalAlignment="Left" Height="23" Margin="492,448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
+        <Button x:Name="deleteButton_3" Content="X" HorizontalAlignment="Left" Margin="565,450,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
+        <TextBox x:Name="filterModTxtBox_4" HorizontalAlignment="Left" Height="23" Margin="12,473,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402"/>
+        <TextBox x:Name="numberMinTxtBox_4" HorizontalAlignment="Left" Height="23" Margin="419,473,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
+        <TextBox x:Name="numberMaxTxtBox_4" HorizontalAlignment="Left" Height="23" Margin="492,473,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
+        <Button x:Name="deleteButton_4" Content="X" HorizontalAlignment="Left" Margin="565,475,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
+        <TextBox x:Name="filterModTxtBox_5" HorizontalAlignment="Left" Height="23" Margin="12,498,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402"/>
+        <TextBox x:Name="numberMinTxtBox_5" HorizontalAlignment="Left" Height="23" Margin="419,498,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
+        <TextBox x:Name="numberMaxTxtBox_5" HorizontalAlignment="Left" Height="23" Margin="492,498,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
+        <Button x:Name="deleteButton_5" Content="X" HorizontalAlignment="Left" Margin="565,500,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
+        <TextBox x:Name="filterModTxtBox_6" HorizontalAlignment="Left" Height="23" Margin="12,523,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="402"/>
+        <TextBox x:Name="numberMinTxtBox_6" HorizontalAlignment="Left" Height="23" Margin="419,523,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" AutomationProperties.ItemType="int" />
+        <TextBox x:Name="numberMaxTxtBox_6" HorizontalAlignment="Left" Height="23" Margin="492,523,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.765,0.618" AutomationProperties.ItemType="int"/>
+        <Button x:Name="deleteButton_1" Content="X" HorizontalAlignment="Left" Margin="565,526,0,0" VerticalAlignment="Top" Width="47" Click="button_Click"/>
+        <TextBox x:Name="searchFilterTxtBox" HorizontalAlignment="Left" Height="23" Margin="12,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="600" TextChanged="searchFilterTxtBox_TextChanged"/>
+        <Label x:Name="foundCounterLbl" Content="0" HorizontalAlignment="Left" Margin="617,73,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="foundCounterLbl_Copy" Content="Items found:" HorizontalAlignment="Left" Margin="617,41,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid HorizontalAlignment="Left" Height="548" Margin="-354,13,0,0" VerticalAlignment="Top" Width="352">
+            <TextBox HorizontalAlignment="Left" Height="24" Margin="10,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="332"/>
+            <ComboBox HorizontalAlignment="Left" Margin="222,23,0,0" VerticalAlignment="Top" Width="120">
+                <ListBoxItem Content="Test"/>
+                <ListBoxItem Content="Test2"/>
+            </ComboBox>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,96,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,96,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,96,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,96,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,93,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,119,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,119,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,119,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,119,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,116,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,142,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,142,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,142,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,142,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,139,0,0" VerticalAlignment="Top"/>
+            <Label Content="OFFENSE" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,187,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,187,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,187,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,187,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,184,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,210,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,210,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,207,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,210,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,210,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,207,0,0" VerticalAlignment="Top"/>
+            <Label Content="OFFENSE" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,255,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,255,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,255,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,255,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,252,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,278,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,278,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,278,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,278,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,275,0,0" VerticalAlignment="Top"/>
+            <Label Content="OFFENSE" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,323,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,323,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,323,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,323,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,320,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="69,346,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="109,346,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="260,346,0,0" TextWrapping="Wrap" Text="min" VerticalAlignment="Top" Width="40"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="300,346,0,0" TextWrapping="Wrap" Text="max" VerticalAlignment="Top" Width="40"/>
+            <Label Content="Damage" HorizontalAlignment="Left" Margin="201,343,0,0" VerticalAlignment="Top"/>
+            <Label Content="OFFENSE" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        </Grid>
     </Grid>
 </Window>
