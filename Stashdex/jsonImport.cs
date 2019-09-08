@@ -32,12 +32,22 @@ namespace Stashdex
             foreach (Item item in stash.items) {
                 item.fillEverything();
             }
-            //Stash stash = JsonConvert.DeserializeObject<Stash>(importTxt.Text);
             Stashes.stashes.Add(stash);
         }
 
         public static void clearStash() {
             Stashes.stashes.Clear();
+        }
+
+        public static void import(string text, int stashnumber) {
+
+            Stash stash = JsonConvert.DeserializeObject<Stash>(text);
+            //KOmme nicht an die Items bei der Erstellung ran. laufe also anschließend durch
+            foreach (Item item in stash.items) {
+                item.fillEverything();
+            }
+            //Stash stash = JsonConvert.DeserializeObject<Stash>(importTxt.Text);
+            Stashes.stashes[stashnumber] = stash;
         }
 
     }

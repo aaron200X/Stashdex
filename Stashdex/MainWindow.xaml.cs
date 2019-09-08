@@ -413,8 +413,10 @@ namespace Stashdex
         }
 
         private void updateBtn_Click(object sender, RoutedEventArgs e) {
-            //jsonImport.import(); //TODO get stashinhalt
             Stashes.getOnlineStashes(nameTxtBox.Text, poeidPwBox.Password, selectedStashNumber);
+            displayAllItems(Stashes.stashes[selectedStashNumber]);
+            Stashes.fillTheStashesAttributes();
+            fillStashList();
         }
     }
 }

@@ -107,10 +107,10 @@ namespace Stashdex {
 
         public static void getOnlineStashes(string name, string poeid, int tabIndex) {
 
-            jsonImport.clearStash();
+            //jsonImport.clearStash();
             string response;
             //TODO, hole Anzahl der Tabs und loope durch
-            string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex={tabIndex}&accountName={name}";
+            string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Blight&tabs=1&tabIndex={tabIndex}&accountName={name}";
             CookieContainer coocCont = new CookieContainer();
             Cookie cook = new Cookie("POESESSID", poeid) { Domain = "pathofexile.com" };
             coocCont.Add(cook);
@@ -118,7 +118,8 @@ namespace Stashdex {
             using (BetterWebClient webClient = new BetterWebClient(coocCont)) {
                 response = webClient.DownloadString(adress);
 
-                jsonImport.import(response);
+                jsonImport.import(response, tabIndex);
+                saveStashesLocal(tabIndex, response);
             }
         }
 
