@@ -33,6 +33,10 @@ namespace Stashdex {
         public double progress { get; set; }
     }
 
+    public class Category {
+        public string name { get; set; }
+    }
+
     public class Item {
         public bool verified { get; set; }
         public int w { get; set; }
@@ -67,6 +71,8 @@ namespace Stashdex {
         public List<string> allMods = new List<string>();
         public Dictionary<string, object> allModsDic = new Dictionary<string, object>();
         public bool isFiltered { get; set; }
+
+        
         //public string name
         //{
         //    get { return name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim(); }
