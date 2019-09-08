@@ -24,13 +24,13 @@ namespace Stashdex {
                     bool badItemBool = false;
                     if (notSupportedTypes != null) {
                         foreach (string nopeItem in notSupportedTypes) {
-                            if (item.category.ToString().Contains($"\"{nopeItem}\"")) {
+                            if (item.category != null && item.category.ToString().Contains($"\"{nopeItem}\"")) {
                                 badItemBool = true;
                             }
                         }
                     }
                     if (!badItemBool) {
-                        if (!categoryList.Contains(item.category.ToString())) {
+                        if (item.category != null && !categoryList.Contains(item.category.ToString())) {
                            categoryList.Add(item.category.ToString());
                         }
                         foreach (string mods in item.allModsDic.Keys) {
@@ -50,7 +50,7 @@ namespace Stashdex {
             string response = "";
             int tabIndex = 0;
             //TODO, hole Anzahl der Tabs und loope durch
-            string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex={tabIndex}&accountName={name}";
+            string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Blight&tabs=1&tabIndex={tabIndex}&accountName={name}";
             CookieContainer coocCont = new CookieContainer();
             Cookie cook = new Cookie("POESESSID", poeid) { Domain = "pathofexile.com" };
             coocCont.Add(cook);
@@ -79,7 +79,7 @@ namespace Stashdex {
                 while (tabIndex < stashes[0].numTabs) {
                     //while (tabIndex < 15) {
                     response = "";
-                    adress = $"https://pathofexile.com/character-window/get-stash-items?league=Legion&tabs=1&tabIndex={tabIndex}&accountName={name}";
+                    adress = $"https://pathofexile.com/character-window/get-stash-items?league=Blight&tabs=1&tabIndex={tabIndex}&accountName={name}";
                     if (!getLocalStash) {
                         try {
                             response = webClient.DownloadString(adress);
