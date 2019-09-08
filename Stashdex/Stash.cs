@@ -180,26 +180,34 @@ namespace Stashdex {
                 foreach (string mod in allMods) {
                     //Ele Resis
                     if (!mod.Contains("socketed")) {
-                        if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning).*Resistance")) {
-                            elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);
-                        }
+                        
                         if (Regex.IsMatch(mod, "to (Fire and Cold|Fire and Lightning|Cold and Lightning).*Resistance")) {
                             elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value) * 2;
+                            continue;
                         }
                         if (Regex.IsMatch(mod, "to all Elemental Resistance")) {
                             elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value) * 3;
+                            continue;
+                        }
+                        if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning).*Resistance")) {
+                            elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);
+                            continue;
                         }
 
                         //All Resis
+                        if (Regex.IsMatch(mod, "to all Elemental Resistance")) {
+                            elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value) * 3;
+                            continue;
+                        }
                         if (Regex.IsMatch(mod, "to (Fire|Cold|Lightning|Chaos).*Resistance")) {
                             allResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value);
+                            continue;
                         }
                         if (Regex.IsMatch(mod, "to (Fire and Cold|Fire and Lightning|Cold and Lightning).*Resistance")) {
                             elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value) * 2;
+                            continue;
                         }
-                        if (Regex.IsMatch(mod, "to all Elemental Resistance")) {
-                            elementalResistance += Convert.ToInt16(help.getNumber1Regex.Match(mod).Value) * 3;
-                        }
+                        
                     }
                 }
                 if (elementalResistance >= 0) {
