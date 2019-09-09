@@ -418,5 +418,11 @@ namespace Stashdex
             Stashes.fillTheStashesAttributes();
             fillStashList();
         }
+
+        private void stashTxtBtn_Click(object sender, RoutedEventArgs e) {
+            Clipboard.SetText(File.ReadAllText($"Stashes/S{selectedStashNumber}.txt"));
+            
+            
+        }
     }
 }

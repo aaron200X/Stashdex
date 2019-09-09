@@ -117,6 +117,7 @@
         <Label x:Name="statusLabel" Content="" HorizontalAlignment="Left" Margin="46,132,0,0" VerticalAlignment="Top" Width="268"/>
         <ListBox x:Name="listBoxStashes" HorizontalAlignment="Left" Height="569" Margin="46,188,0,0" VerticalAlignment="Top" Width="268" SelectionChanged="listBoxStashes_SelectionChanged"/>
         <Button x:Name="updateBtn" Content="update" HorizontalAlignment="Left" Margin="357,160,0,0" VerticalAlignment="Top" Width="75" Click="updateBtn_Click"/>
+        <Button x:Name="stashTxtBtn" Content="StashTxt" HorizontalAlignment="Left" Margin="849,160,0,0" VerticalAlignment="Top" Width="75" Click="stashTxtBtn_Click"/>
 
     </Grid>
 </Window>
