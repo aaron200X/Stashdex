@@ -101,11 +101,15 @@
             <DataGrid x:Name="dataGridQuad" HorizontalAlignment="Left" Margin="49,31,0,0" VerticalAlignment="Top"/>
         </Grid>
         <Canvas x:Name="itemPreviewCanvas" HorizontalAlignment="Left" Height="300" Margin="46,1010,0,-315.333" VerticalAlignment="Top" Width="200" Background="Black">
-            <Image x:Name="itemPreviewUpperBg" Height="84" Width="200"/>
-            <Label x:Name="nameLabel" Content="Label" Canvas.Left="10" Canvas.Top="10" Height="30" Width="Auto" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
-            <Label x:Name="itemTypeLabel" Content="Label" Canvas.Top="40" Height="30" Width="Auto" Canvas.Left="10" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
-            <Label x:Name="explizitMods" Content="Label" Canvas.Top="120" Height="Auto" Width="Auto" Canvas.Left="10" Foreground="White" FontSize="10" HorizontalAlignment="Center"/>
             <Border x:Name="previewBorder" BorderBrush="Yellow" BorderThickness="3" Height="300" Width="200"/>
+
+            <Image x:Name="itemPreviewUpperBg" Height="65" Width="200"/>
+            <Label x:Name="nameLabel" Content="Label" Canvas.Left="10" Canvas.Top="5" Height="30" Width="180" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
+            <Label x:Name="itemTypeLabel" Content="Label" Canvas.Top="35" Height="30" Width="180" Canvas.Left="10" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
+            <!-- implicitmods-->
+            <Label x:Name="explizitMods" Content="Label" Canvas.Top="120" Height="Auto" Width="Auto" Canvas.Left="10" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+            <Label x:Name="implizitMods" Content="Label" Canvas.Top="70" Height="Auto" Width="Auto" Canvas.Left="10" Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
+            <Label x:Name="craftedMods" Content="Label" Canvas.Top="220" Height="Auto" Width="Auto" Canvas.Left="10" Foreground="#FFA2FFF7" FontSize="14" HorizontalAlignment="Center"/>
 
 
 

@@ -18,8 +18,7 @@ using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Stashdex
-{
+namespace Stashdex {
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -80,7 +79,7 @@ namespace Stashdex
 
             usedGrid.Children.Add(c);
             c.Children.Add(itemImage);
-            if (isQuadtab) { 
+            if (isQuadtab) {
                 itemImage.Width = item.w * 24;
                 itemImage.Height = item.h * 24;
             }
@@ -89,7 +88,7 @@ namespace Stashdex
 
             canvasList.Add(c);
         }
-    
+
 
         void setStashSize(bool isQuadtab) {
             if (isQuadtab) {
@@ -108,12 +107,12 @@ namespace Stashdex
         /// Den Grid säubern
         /// </summary>
         /// <param name="counter"></param>
-        public void deleteAllCanvas(){
-            foreach(Canvas c in canvasList) {
+        public void deleteAllCanvas() {
+            foreach (Canvas c in canvasList) {
                 usedGrid.Children.Remove(c);
             }
             canvasList.Clear();
-            
+
         }
 
         public void displayAllItems(Stash stash) {
@@ -127,15 +126,13 @@ namespace Stashdex
             }
         }
 
-        
 
-        private void myPanel_MouseLeave(object sender, MouseEventArgs e)
-        {
+
+        private void myPanel_MouseLeave(object sender, MouseEventArgs e) {
             itemPreviewCanvas.Visibility = Visibility.Hidden;
         }
 
-        private void myPanel_MouseMove(object sender, MouseEventArgs e)
-        {
+        private void myPanel_MouseMove(object sender, MouseEventArgs e) {
             itemPreviewCanvas.Visibility = Visibility.Visible;
 
             // Retrieve the coordinate of the mouse position.
@@ -150,25 +147,20 @@ namespace Stashdex
                 new PointHitTestParameters(pt));
 
             // Perform actions on the hit test results list.
-            if (hitResultsList.Count > 0)
-            {
-                for (int i = 0; i <= hitResultsList.Count(); i++)
-                {
+            if (hitResultsList.Count > 0) {
+                for (int i = 0; i <= hitResultsList.Count(); i++) {
                     int index = -1;
 
-                    if (hitResultsList[i].GetType().ToString().Contains("Image"))
-                    {
+                    if (hitResultsList[i].GetType().ToString().Contains("Image")) {
                         Image img = (Image)hitResultsList[i];
                         index = Convert.ToInt32(img.Name.Split('_').Last());
 
-                    } else if (hitResultsList[i].GetType().ToString().Contains("Canvas"))
-                    {
+                    } else if (hitResultsList[i].GetType().ToString().Contains("Canvas")) {
                         Canvas canvas = (Canvas)hitResultsList[i];
                         index = Convert.ToInt32(canvas.Name.Split('_').Last());
                     }
 
-                    if (index >= 0)
-                    {
+                    if (index >= 0) {
                         Item item = Stashes.stashes[selectedStashNumber].items[index];
 
                         Thickness margin = itemPreviewCanvas.Margin;
@@ -179,47 +171,52 @@ namespace Stashdex
                         fillItemView(item);
                         break;
                     }
-                    
+
                 }
             }
-            
+
         }
-    
 
 
-         public void fillItemView(Item item)
-        {
-            //itemPreviewUpperBg.lo
-            //Der Name ist bei Magicitems leer und das Itemtype übernimmt die Funktion
-            if (string.IsNullOrEmpty(item.name))
-            {
+
+        public void fillItemView(Item item) {
+            //TODO get source
+            //itemPreviewUpperBg.Source = item.
+            
+                //Der Name ist bei Magicitems leer und das Itemtype übernimmt die Funktion
+            if (string.IsNullOrEmpty(item.name)) {
                 nameLabel.Content = item.typeLine.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim();
                 itemTypeLabel.Content = "";
-            } else
-            {
+            } else {
                 nameLabel.Content = item.name.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim();
                 itemTypeLabel.Content = item.typeLine.Replace("<<set:MS>><<set:M>><<set:S>>", "").Trim();
             }
-            if (item?.explicitMods?.Count() >= 0)
-            {
 
+            if (item?.implicitMods?.Count() >= 0) {
+                implizitMods.Content = string.Join("\n", item.implicitMods);
+            } else {
+                implizitMods.Content = "";
+            }
+
+            if (item?.explicitMods?.Count() >= 0) {
                 explizitMods.Content = string.Join("\n", item.explicitMods);
-            } else
-            {
+            } else {
                 explizitMods.Content = "";
             }
-            //explizitMods.Content = item.filterMods;
+
+            if (item?.craftedMods?.Count() >= 0) {
+                craftedMods.Content = string.Join("\n", item.craftedMods);
+            } else {
+                craftedMods.Content = "";
+            }
 
             //Get biggest width
             double biggestWidth = 0;
-            
-            for (int i = 0; i < itemPreviewCanvas.Children.Count; i++)
-            {
-                if (itemPreviewCanvas.Children[i].GetType().ToString().Contains("Label"))
-                {
+
+            for (int i = 0; i < itemPreviewCanvas.Children.Count; i++) {
+                if (itemPreviewCanvas.Children[i].GetType().ToString().Contains("Label")) {
                     Label label = (Label)itemPreviewCanvas.Children[i];
-                    if (biggestWidth == 0 || biggestWidth <= label.ActualWidth)
-                    {
+                    if (biggestWidth == 0 || biggestWidth <= label.ActualWidth) {
                         biggestWidth = label.ActualWidth;
                     }
                 }
@@ -227,8 +224,7 @@ namespace Stashdex
 
             //Setzt die Borderfarbe
             Brush borderBrush = new SolidColorBrush();
-            switch (item.frameType)
-            {
+            switch (item.frameType) {
                 case 0:
                     previewBorder.BorderBrush = Brushes.White;
                     break;
@@ -256,22 +252,21 @@ namespace Stashdex
                 case 8:
                     previewBorder.BorderBrush = Brushes.Violet;
                     break;
-                case 9:  
+                case 9:
                     previewBorder.BorderBrush = Brushes.Black;
                     break;
 
             }
- 
-                //Setzt die Breite
-            
+
+            //Setzt die Breite
+
             itemPreviewCanvas.Width = biggestWidth + 20;
             previewBorder.Width = biggestWidth + 20;
 
         }
 
         // Return the result of the hit test to the callback.
-        public HitTestResultBehavior MyHitTestResult(HitTestResult result)
-        {
+        public HitTestResultBehavior MyHitTestResult(HitTestResult result) {
             // Add the hit test result to the list that will be processed after the enumeration.
             hitResultsList.Add(result.VisualHit);
 
@@ -295,8 +290,8 @@ namespace Stashdex
             string onlyThePath = System.IO.Path.GetFullPath($@"pics\items\");
             string fullPath = System.IO.Path.GetFullPath($@"pics\items\{itemName}.png");
             //string smallFilePath = Resizer(fullPath, itemName, onlyThePath, item);
-            
-                return fullPath;
+
+            return fullPath;
 
 
         }
@@ -304,11 +299,11 @@ namespace Stashdex
         public string Resizer(string fullPath, string itemName, string onlyThePath, Item item) {
             string newFilename = $"{itemName}.png";
             if (!File.Exists($@"{onlyThePath}\{newFilename}"))
-            using (System.Drawing.Image original = System.Drawing.Image.FromFile(fullPath)) {
-                int newHeight = Convert.ToInt16(item.h * 34);
-                int newWidth = Convert.ToInt16(item.w * 34);
+                using (System.Drawing.Image original = System.Drawing.Image.FromFile(fullPath)) {
+                    int newHeight = Convert.ToInt16(item.h * 34);
+                    int newWidth = Convert.ToInt16(item.w * 34);
 
-                    if (original.Height % 2 != 0){
+                    if (original.Height % 2 != 0) {
                         newHeight += 1;
                     }
                     if (original.Width % 2 != 0) {
@@ -316,20 +311,19 @@ namespace Stashdex
                     }
 
                     using (System.Drawing.Bitmap newPic = new System.Drawing.Bitmap(newWidth, newHeight)) {
-                    using (System.Drawing.Graphics gr = System.Drawing.Graphics.FromImage(newPic)) {
-                        gr.DrawImage(original, 0, 0, (newWidth), (newHeight));
-                         /* Put new file path here */
-                        //TODO richtiger Name + richtiger Ordner
-                        newPic.Save($@"{onlyThePath}\{newFilename}", System.Drawing.Imaging.ImageFormat.Png);
+                        using (System.Drawing.Graphics gr = System.Drawing.Graphics.FromImage(newPic)) {
+                            gr.DrawImage(original, 0, 0, (newWidth), (newHeight));
+                            /* Put new file path here */
+                            //TODO richtiger Name + richtiger Ordner
+                            newPic.Save($@"{onlyThePath}\{newFilename}", System.Drawing.Imaging.ImageFormat.Png);
+                        }
                     }
                 }
-            }
             return $@"{onlyThePath}\{newFilename}";
         }
 
 
-        public Image setImage(Item item, bool isQuadtab)
-        {
+        public Image setImage(Item item, bool isQuadtab) {
             Image image = new Image();
             BitmapImage bi = new BitmapImage();
             string itemName = nameReg.Match(item.icon).Groups[1].Value;
@@ -354,9 +348,9 @@ namespace Stashdex
                     listBoxI.Content = stash.n;
                 }
 
-                
 
-                
+
+
                 int grayScale = (int)((stash.colour.r * .3) + (stash.colour.g * .59) + (stash.colour.b * .11));
 
                 //Original A = 255
@@ -367,24 +361,23 @@ namespace Stashdex
                 listBoxI.Background = bru;
                 if (stash.hasFilteredItem) {
                     listBoxI.BorderBrush = boarderbruYellow;
-                    
+
                     listBoxI.BorderThickness = new Thickness(5);
                 }
-                
+
                 if (grayScale <= 100) {
                     //TODO set the right Textcolor
                 }
                 listBoxStashes.Items.Add(listBoxI);
             }
-            
+
         }
 
-        private void filterOptionsButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void filterOptionsButton_Click(object sender, RoutedEventArgs e) {
             //TODO preventing multiple Windows 
             FilterOptionsWindow filterWindow = new FilterOptionsWindow();
             FilterOptionsWindow.fillFilterBox(filterWindow);
-            
+
             filterWindow.Show();
         }
 
@@ -407,9 +400,9 @@ namespace Stashdex
             if (listBoxStashes.SelectedIndex != -1) {
                 selectedStashNumber = listBoxStashes.SelectedIndex;
             }
-            
+
             displayAllItems(Stashes.stashes[selectedStashNumber]);
-            
+
         }
 
         private void updateBtn_Click(object sender, RoutedEventArgs e) {
@@ -421,8 +414,8 @@ namespace Stashdex
 
         private void stashTxtBtn_Click(object sender, RoutedEventArgs e) {
             Clipboard.SetText(File.ReadAllText($"Stashes/S{selectedStashNumber}.txt"));
-            
-            
+
+
         }
     }
 }
