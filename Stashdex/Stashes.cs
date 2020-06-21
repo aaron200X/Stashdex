@@ -13,6 +13,7 @@ namespace Stashdex {
         public static List<Item> allFilteredItems = new List<Item>();
         public static List<string> absolutelyAllMods = new List<string>();
         static MainWindow win = (MainWindow)App.Current.MainWindow;
+        public const string leagueName = "harvest";
 
         /// <summary>
         /// Creates a List with all mods, that exists in your stash
@@ -50,7 +51,7 @@ namespace Stashdex {
             string response = "";
             int tabIndex = 0;
             //TODO, hole Anzahl der Tabs und loope durch
-            string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Delirium&tabs=1&tabIndex={tabIndex}&accountName={name}";
+            string adress = $"https://pathofexile.com/character-window/get-stash-items?league={leagueName}&tabs=1&tabIndex={tabIndex}&accountName={name}";
             CookieContainer coocCont = new CookieContainer();
             Cookie cook = new Cookie("POESESSID", poeid) { Domain = "pathofexile.com" };
             coocCont.Add(cook);
@@ -79,7 +80,7 @@ namespace Stashdex {
                 while (tabIndex < stashes[0].numTabs) {
                     //while (tabIndex < 15) {
                     response = "";
-                    adress = $"https://pathofexile.com/character-window/get-stash-items?league=Delirium&tabs=1&tabIndex={tabIndex}&accountName={name}";
+                    adress = $"https://pathofexile.com/character-window/get-stash-items?league={leagueName}&tabs=1&tabIndex={tabIndex}&accountName={name}";
                     if (!getLocalStash) {
                         try {
                             response = webClient.DownloadString(adress);
@@ -110,7 +111,7 @@ namespace Stashdex {
             //jsonImport.clearStash();
             string response;
             //TODO, hole Anzahl der Tabs und loope durch
-            string adress = $"https://pathofexile.com/character-window/get-stash-items?league=Delirium&tabs=1&tabIndex={tabIndex}&accountName={name}";
+            string adress = $"https://pathofexile.com/character-window/get-stash-items?league={leagueName}&tabs=1&tabIndex={tabIndex}&accountName={name}";
             CookieContainer coocCont = new CookieContainer();
             Cookie cook = new Cookie("POESESSID", poeid) { Domain = "pathofexile.com" };
             coocCont.Add(cook);
